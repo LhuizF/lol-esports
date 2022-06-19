@@ -14,17 +14,12 @@ const Home: NextPage = () => {
   useEffect(() => {
     api.get('/getLive?hl=pt-BR').then((res) => {
       const { events }: Schedule = res.data.data.schedule;
-      //console.log('events', events);
-      const gamesLol = events.filter((event) => event.type === 'match');
+      const gamesLol = events.filter((event) => !!event.match);
       setLiveGames(gamesLol);
     });
 
     setLoading(false);
   }, []);
-
-  useEffect(() => {
-    //console.log(liveGames);
-  }, [liveGames]);
 
   return (
     <Main title="eSports - Scoreboard">
