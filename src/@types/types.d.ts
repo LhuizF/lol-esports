@@ -98,7 +98,7 @@ interface ParticipantMetadata {
   role: Roles;
 }
 
-type GameState = 'in_game' | 'finished';
+type GameState = 'in_game' | 'finished' | 'paused';
 
 interface Frame {
   rfc460Timestamp: string;
