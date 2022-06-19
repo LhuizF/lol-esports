@@ -11,7 +11,7 @@ const Main: React.FC<Props> = ({ children, title }) => {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title ? title : 'Esports Live'}</title>
       </Head>
       <Container>{children}</Container>
     </>
