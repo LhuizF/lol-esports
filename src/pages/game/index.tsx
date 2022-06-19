@@ -1,35 +1,82 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import Main from '../../components/Templates/Main';
-import api from '../../services/api';
+import { api, apiGame } from '../../services/api';
+import Logo from '../../components/Atoms/Logo';
+import { getDateFormatted } from '../../utils';
+import DisplayGame from '../../components/Organisms/DisplayGame';
 
 const Game: NextPage = () => {
   const [events, setEvents] = useState<EventGame>();
-  const [title, setTitle] = useState<string>('Game');
+  const [gameNumber, setGameNumber] = useState<number>(0);
+  const [windowGame, setWindowGame] = useState<WindowGame>();
+  const [lastFrame, setLastFrame] = useState<Frame>();
+  const [loading, setLoading] = useState(true);
+  const [title, setTitle] = useState<string>('');
 
   const router = useRouter();
   const { matchId } = router.query;
 
   useEffect(() => {
     if (!matchId) return;
+    const params = {
+      id: matchId
+    };
+
     const getDate = async () => {
-      await api.get(`getEventDetails?id=${matchId}`).then((res) => {
-        setEvents(res.data.data.event);
-      });
+      const events: EventGame = await api
+        .get(`getEventDetails`, { params })
+        .then((res) => res.data.data.event);
+
+      const { games } = events.match;
+      setEvents(events);
+      getGameWindow(games);
     };
 
     getDate();
   }, [matchId]);
 
+  const getGameWindow = useCallback(
+    async (game: Game[]) => {
+      const params = {
+        startingTime: getDateFormatted()
+      };
+
+      const windowGame: WindowGame = await apiGame
+        .get(`window/${game[gameNumber].id}`, { params })
+        .then((res) => res.data);
+
+      setWindowGame(windowGame);
+    },
+    [gameNumber]
+  );
+
   useEffect(() => {
-    if (!events) return;
+    if (!events || !windowGame) return;
     const codeTeams = events.match.teams.map((team) => team.code).join(' vs ');
 
+    setLastFrame(windowGame.frames[windowGame.frames.length - 1]);
     setTitle(codeTeams);
-  }, [events]);
+    setLoading(false);
+  }, [events, windowGame]);
 
-  return <Main title={title}>Game</Main>;
+  return (
+    <Main title={title}>
+      {loading ? (
+        <div>loading</div>
+      ) : (
+        <>
+          <Logo
+            image={events?.league.image}
+            name={events?.league.name}
+            size={80}
+          />
+          <DisplayGame frame={lastFrame} teams={events.match.teams} />
+        </>
+      )}
+    </Main>
+  );
 };
 
 export default Game;
