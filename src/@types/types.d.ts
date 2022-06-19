@@ -69,3 +69,63 @@ interface Game {
   teams: { id: string; side: 'blue' | 'red' }[];
   vods: Array;
 }
+
+interface WindowGame {
+  esportsGameId: string;
+  esportsMatchId: string;
+  gameMetadata: GameMetadata;
+  frames: Frame[];
+}
+
+interface GameMetadata {
+  patchVersion: string;
+  blueTeamMetadata: TeamMetadata;
+  redTeamMetadata: TeamMetadata;
+}
+
+interface TeamMetadata {
+  esportsTeamId: string;
+  participantMetadata: ParticipantMetadata[];
+}
+
+type Roles = 'top' | 'jungle' | 'mid' | 'bot' | 'support';
+
+interface ParticipantMetadata {
+  participantId: number;
+  esportsPlayerId: string;
+  summonerName: string;
+  championId: string;
+  role: Roles;
+}
+
+type GameState = 'in_game' | 'finished';
+
+interface Frame {
+  rfc460Timestamp: string;
+  gameState: GameState;
+  blueTeam: TeamFrame;
+  redTeam: TeamFrame;
+}
+type Dragons = 'cloud' | 'hextech' | 'infernal' | 'mountain' | 'ocean';
+
+interface TeamFrame {
+  totalGold: number;
+  inhibitors: number;
+  towers: number;
+  barons: number;
+  totalKills: number;
+  dragons: Dragons[] | [];
+  participants: ParticipantFrame[];
+}
+
+interface ParticipantFrame {
+  participantId: number;
+  totalGold: number;
+  level: number;
+  kills: number;
+  deaths: number;
+  assists: number;
+  creepScore: number;
+  currentHealth: number;
+  maxHealth: number;
+}
