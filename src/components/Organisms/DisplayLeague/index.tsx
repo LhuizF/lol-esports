@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardGame from '../../Molecules/CardGame';
 import { Container, League, Game } from './styles';
-import LogoAndName from '../../Atoms/LogoAndName';
+import Logo from '../../Atoms/Logo';
 
 interface Props {
   events: EventGame;
@@ -23,11 +23,7 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
   return (
     <Container>
       <League>
-        <LogoAndName
-          image={events.league.image}
-          name={events.league.name}
-          size={80}
-        />
+        <Logo image={events.league.image} name={events.league.name} size={80} />
       </League>
       <Game>
         <a

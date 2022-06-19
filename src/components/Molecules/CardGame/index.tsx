@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoAndName from '../../Atoms/LogoAndName';
+import Logo from '../../Atoms/Logo';
 import { Container, VersusLogo, Team } from './styles';
 import { RiCloseLine } from 'react-icons/ri';
 interface Props {
@@ -12,7 +12,7 @@ const CardGame: React.FC<Props> = ({ teams }) => {
   return (
     <Container>
       <Team>
-        <LogoAndName image={blueSize.image} name={blueSize.name} size={70} />
+        <Logo image={blueSize.image} name={blueSize.name} size={70} />
       </Team>
 
       <VersusLogo>
@@ -20,7 +20,7 @@ const CardGame: React.FC<Props> = ({ teams }) => {
       </VersusLogo>
 
       <Team>
-        <LogoAndName image={redSize.image} name={redSize.name} size={70} />
+        <Logo image={redSize.image} name={redSize.name} size={70} />
       </Team>
     </Container>
   );
