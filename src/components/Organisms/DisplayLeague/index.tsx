@@ -26,11 +26,7 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
         <Logo image={events.league.image} name={events.league.name} size={80} />
       </League>
       <Game>
-        <a
-          href={`game?matchId=${events.match.id}`}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={`game/${events.match.id}`} target="_blank" rel="noreferrer">
           <CardGame teams={events.match.teams} />
         </a>
       </Game>

@@ -16,13 +16,11 @@ const Game: NextPage = () => {
   const [title, setTitle] = useState<string>('');
 
   const router = useRouter();
-  const { matchId } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
-    if (!matchId) return;
-    const params = {
-      id: matchId
-    };
+    if (!id) return;
+    const params = { id };
 
     const getDate = async () => {
       const events: EventGame = await api
@@ -35,7 +33,7 @@ const Game: NextPage = () => {
     };
 
     getDate();
-  }, [matchId]);
+  }, [id]);
 
   const getGameWindow = useCallback(
     async (game: Game[]) => {
