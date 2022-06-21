@@ -10,6 +10,13 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
+  p {
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 1rem;
+    width: 160px;
+    text-align: center;
+  }
 `;
 
 export const Text = styled.div`

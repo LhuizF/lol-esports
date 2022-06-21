@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.grey};
   border-radius: 10px;
   padding: 22px;
-  // height: 130px;
+  height: 130px;
   margin-bottom: 20px;
 `;
 
