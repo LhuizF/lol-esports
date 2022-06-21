@@ -43,7 +43,8 @@ const Game: NextPage = () => {
 
       const windowGame: WindowGame = await apiGame
         .get(`window/${game[gameNumber].id}`, { params })
-        .then((res) => res.data);
+        .then((res) => res.data)
+        .catch((err) => console.error(err.data));
 
       setWindowGame(windowGame);
     },
@@ -53,7 +54,6 @@ const Game: NextPage = () => {
   useEffect(() => {
     if (!events || !windowGame) return;
     const codeTeams = events.match.teams.map((team) => team.code).join(' vs ');
-
     setLastFrame(windowGame.frames[windowGame.frames.length - 1]);
     setTitle(codeTeams);
     setLoading(false);
@@ -61,10 +61,10 @@ const Game: NextPage = () => {
 
   useEffect(() => {
     setInterval(() => {
-      console.log('getGameWindow');
+      if (!events) return;
       getGameWindow(events.match.games);
-    }, 70000);
-  }, []);
+    }, 6000);
+  }, [events]);
 
   return (
     <Main title={title}>

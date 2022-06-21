@@ -12,13 +12,15 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('/getLive?hl=pt-BR').then((res) => {
-      const { events }: Schedule = res.data.data.schedule;
-      const gamesLol = events.filter((event) => !!event.match);
-      setLiveGames(gamesLol);
-    });
+    setInterval(() => {
+      api.get('/getLive?hl=pt-BR').then((res) => {
+        const { events }: Schedule = res.data.data.schedule;
+        const gamesLol = events.filter((event) => !!event.match);
+        setLiveGames(gamesLol);
+      });
 
-    setLoading(false);
+      setLoading(false);
+    }, 6000);
   }, []);
 
   return (
