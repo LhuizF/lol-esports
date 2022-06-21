@@ -78,7 +78,11 @@ const Game: NextPage = () => {
             name={events?.league.name}
             size={80}
           />
-          <DisplayGame frame={lastFrame} teams={events.match.teams} />
+          <DisplayGame
+            frame={lastFrame}
+            teams={events.match.teams}
+            metadata={windowGame.gameMetadata}
+          />
         </>
       )}
     </Main>

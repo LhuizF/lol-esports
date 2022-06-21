@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Container, Header, Text } from './styles';
 import { getGameState } from '../../../utils';
 import Logo from '../../Atoms/Logo';
 import Scoreboard from '../../Molecules/Scoreboard';
-import { Container, Header, Text } from './styles';
+import ChampionsTable from '../../Molecules/ChampionsTable';
 
 interface Props {
   teams: Team[];
   frame: Frame;
+  metadata: GameMetadata;
 }
 
-const DisplayGame: React.FC<Props> = ({ teams, frame }) => {
+const DisplayGame: React.FC<Props> = ({ teams, frame, metadata }) => {
   const [blueSize, redSize] = teams;
   const { gameState } = frame;
+  const { blueTeamMetadata, redTeamMetadata } = metadata;
 
   return (
     <Container>
@@ -26,6 +29,11 @@ const DisplayGame: React.FC<Props> = ({ teams, frame }) => {
         <Logo image={redSize.image} size={60} />
       </Header>
       <Scoreboard frame={frame} />
+      <ChampionsTable
+        frame={frame}
+        blueSize={blueTeamMetadata}
+        redSize={redTeamMetadata}
+      />
     </Container>
   );
 };
