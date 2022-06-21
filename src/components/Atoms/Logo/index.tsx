@@ -6,11 +6,12 @@ interface Props {
   image: string;
   name?: string;
   size: number;
+  height?: number;
 }
 
-const Logo: React.FC<Props> = ({ image, name, size }) => {
+const Logo: React.FC<Props> = ({ image, name, size, height }) => {
   return (
-    <Container minHeight={!!name}>
+    <Container height={height}>
       <Image src={image} width={size} height={size} />
       {name && <p>{name}</p>}
     </Container>

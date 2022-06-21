@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-  minHeight: boolean;
+  height?: number;
 }
 
 export const Container = styled.div<Props>`
@@ -10,7 +10,7 @@ export const Container = styled.div<Props>`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
-  ${({ minHeight }) => minHeight && ` height: 120px;`}
+  height: ${({ height }) => (height ? height : 'auto')};
   box-sizing: border-box;
 
   p {
