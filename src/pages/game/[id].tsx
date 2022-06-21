@@ -59,6 +59,13 @@ const Game: NextPage = () => {
     setLoading(false);
   }, [events, windowGame]);
 
+  useEffect(() => {
+    setInterval(() => {
+      console.log('getGameWindow');
+      getGameWindow(events.match.games);
+    }, 70000);
+  }, []);
+
   return (
     <Main title={title}>
       {loading ? (
@@ -66,6 +73,7 @@ const Game: NextPage = () => {
       ) : (
         <>
           <Logo
+            height={120}
             image={events?.league.image}
             name={events?.league.name}
             size={80}
