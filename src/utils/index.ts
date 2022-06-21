@@ -20,3 +20,22 @@ export function getGameState(gameState: GameState): string {
 
   return states[gameState];
 }
+
+export function SetGold(gold: number, newGold: number, setNewGold: any): void {
+  const dif = newGold - gold;
+
+  if (dif > 2000) {
+    setNewGold(newGold);
+    return;
+  }
+
+  for (let i = 0; i <= dif; i++) {
+    setTimeout(
+      (nr) => {
+        setNewGold(gold + nr);
+      },
+      (i * 5000) / newGold,
+      i
+    );
+  }
+}
