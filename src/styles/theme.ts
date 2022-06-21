@@ -4,6 +4,8 @@ export const theme = {
     grey: '#202020',
     greySecondary: '#383C40',
     red: '#EF2940',
-    white: '#EFEFEF'
+    white: '#EFEFEF',
+    blueTeam: '#1580B6',
+    redTeam: '#DE2F2F'
   }
 };
