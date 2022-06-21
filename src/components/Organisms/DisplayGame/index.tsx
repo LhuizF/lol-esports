@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getGameState } from '../../../utils';
 import Logo from '../../Atoms/Logo';
 import Scoreboard from '../../Molecules/Scoreboard';
@@ -10,10 +10,8 @@ interface Props {
 }
 
 const DisplayGame: React.FC<Props> = ({ teams, frame }) => {
-  //console.log('teams', teams);
-  //console.log('frame', frame);
   const [blueSize, redSize] = teams;
-  const { blueTeam, redTeam, gameState } = frame;
+  const { gameState } = frame;
 
   return (
     <Container>
@@ -27,7 +25,7 @@ const DisplayGame: React.FC<Props> = ({ teams, frame }) => {
         <p>{redSize.name}</p>
         <Logo image={redSize.image} size={60} />
       </Header>
-      <Scoreboard blueTeam={blueTeam} redTeam={redTeam} />
+      <Scoreboard frame={frame} />
     </Container>
   );
 };

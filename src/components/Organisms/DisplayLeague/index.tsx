@@ -8,18 +8,6 @@ interface Props {
 }
 
 const DisplayLeague: React.FC<Props> = ({ events }) => {
-  const [currentGame, setCurrentGame] = useState<Game>();
-
-  useEffect(() => {
-    const [currentGame] = events.match.games.filter(
-      (game) => game.state === 'inProgress'
-    );
-
-    console.log('events', events);
-
-    setCurrentGame(currentGame);
-  }, [events]);
-
   return (
     <Container>
       <League>
