@@ -42,7 +42,7 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
         <DetailsIcon name="inhibitor" color="blue" value={redTeam.inhibitors} />
         <DetailsIcon name="baron" color="blue" value={blueTeam.barons} />
         <DetailsIcon name="towers" color="blue" value={blueTeam.towers} />
-        <DetailsIcon name="coins" color="blue" value={blueGold} />
+        <DetailsIcon name="coins" color="blue" value={blueGold.toLocaleString('pt-BR')} />
       </Content>
 
       <Text>
@@ -54,7 +54,7 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
       </Text>
 
       <Content>
-        <DetailsIcon name="coins" color="red" value={redGold} />
+        <DetailsIcon name="coins" color="red" value={redGold.toLocaleString('pt-BR')} />
         <DetailsIcon name="towers" color="red" value={redTeam.towers} />
         <DetailsIcon name="baron" color="red" value={redTeam.barons} />
         <DetailsIcon name="inhibitor" color="red" value={redTeam.inhibitors} />
