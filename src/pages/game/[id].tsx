@@ -10,8 +10,7 @@ import DisplayGame from '../../components/Organisms/DisplayGame';
 const Game: NextPage = () => {
   const [events, setEvents] = useState<EventGame>();
   const [gameNumber, setGameNumber] = useState<number>(0);
-  const [windowGame, setWindowGame] = useState<WindowGame>();
-  const [lastFrame, setLastFrame] = useState<Frame>();
+
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState<string>('');
 
@@ -27,44 +26,15 @@ const Game: NextPage = () => {
         .get(`getEventDetails`, { params })
         .then((res) => res.data.data.event);
 
-      const { games } = events.match;
+      if (!events) return;
       setEvents(events);
-      getGameWindow(games);
+      const codeTeams = events.match.teams.map((team) => team.code).join(' vs ');
+      setTitle(codeTeams);
+      setLoading(false);
     };
 
     getDate();
   }, [id]);
-
-  const getGameWindow = useCallback(
-    async (game: Game[]) => {
-      const params = {
-        startingTime: getDateFormatted()
-      };
-
-      const windowGame: WindowGame = await apiGame
-        .get(`window/${game[gameNumber].id}`, { params })
-        .then((res) => res.data)
-        .catch((err) => console.error(err.data));
-
-      setWindowGame(windowGame);
-    },
-    [gameNumber]
-  );
-
-  useEffect(() => {
-    if (!events || !windowGame) return;
-    const codeTeams = events.match.teams.map((team) => team.code).join(' vs ');
-    setLastFrame(windowGame.frames[windowGame.frames.length - 1]);
-    setTitle(codeTeams);
-    setLoading(false);
-  }, [events, windowGame]);
-
-  useEffect(() => {
-    setInterval(() => {
-      if (!events) return;
-      getGameWindow(events.match.games);
-    }, 6000);
-  }, [events]);
 
   return (
     <Main title={title}>
@@ -78,11 +48,7 @@ const Game: NextPage = () => {
             name={events?.league.name}
             size={80}
           />
-          <DisplayGame
-            frame={lastFrame}
-            teams={events.match.teams}
-            metadata={windowGame.gameMetadata}
-          />
+          <DisplayGame match={events.match} gameNumber={gameNumber} />
         </>
       )}
     </Main>
