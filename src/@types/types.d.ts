@@ -129,3 +129,39 @@ interface ParticipantFrame {
   currentHealth: number;
   maxHealth: number;
 }
+
+interface Player extends DetailsParticipant, ParticipantMetadata {}
+
+type Abilities = 'Q' | 'W' | 'E' | 'R';
+
+interface DetailsGame {
+  frames: FramesDetails[];
+}
+
+interface FramesDetails {
+  rfc460Timestamp: string;
+  participants: DetailsParticipant[];
+}
+
+interface DetailsParticipant extends ParticipantFrame {
+  totalGoldEarned: number;
+  killParticipation: number;
+  championDamageShare: number;
+  wardsPlaced: number;
+  wardsDestroyed: number;
+  attackDamage: number;
+  abilityPower: number;
+  criticalChance: number;
+  attackSpeed: number;
+  lifeSteal: number;
+  armor: number;
+  magicResistance: number;
+  tenacity: number;
+  items: number[];
+  perkMetadata: {
+    styleId: number;
+    subStyleId: number;
+    perks: number[];
+  };
+  abilities: Abilities[];
+}
