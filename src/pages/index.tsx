@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <Main title="eSports - Scoreboard">
+    <Main title="Scoreboard">
       {loading ? (
         <Loading />
       ) : (
