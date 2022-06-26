@@ -4,6 +4,8 @@ export const Container = styled.div`
   margin-top: 2rem;
   background-color: ${({ theme }) => theme.colors.greySecondary};
   width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
 `;
 
 export const Header = styled.div`

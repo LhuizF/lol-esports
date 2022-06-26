@@ -10,6 +10,5 @@ export const Container = styled.div`
     margin: 0.5rem 0;
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.white};
-    font-weight: bold;
   }
 `;
