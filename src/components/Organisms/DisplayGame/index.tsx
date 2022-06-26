@@ -62,7 +62,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
   return (
     <Container>
       {loading ? (
-        <div>aa</div>
+        <Text>Jogo ainda não inciado</Text>
       ) : (
         <>
           <Header>
