@@ -15,9 +15,10 @@ const ChampionsTable: React.FC<Props> = ({ frame, gameMetadata, details, items }
 
   useEffect(() => {
     const { blueTeam, redTeam } = frame;
+    const { blueTeamMetadata, redTeamMetadata } = gameMetadata;
 
-    setPlayersBlue(setPlayers(blueTeam.participants, gameMetadata.blueTeamMetadata));
-    setPlayersRed(setPlayers(redTeam.participants, gameMetadata.redTeamMetadata));
+    setPlayersBlue(setPlayers(blueTeam.participants, blueTeamMetadata));
+    setPlayersRed(setPlayers(redTeam.participants, redTeamMetadata));
   }, [frame]);
 
   const setPlayers = (team: ParticipantFrame[], size: TeamMetadata): Player[] => {
