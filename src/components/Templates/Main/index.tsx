@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 interface Props {
   children: React.ReactNode;
@@ -13,7 +13,9 @@ const Main: React.FC<Props> = ({ children, title }) => {
       <Head>
         <title>{title ? `Esports Live - ${title}` : 'Esports Live'}</title>
       </Head>
-      <Container>{children}</Container>
+      <Container>
+        <Content>{children}</Content>
+      </Container>
     </>
   );
 };
