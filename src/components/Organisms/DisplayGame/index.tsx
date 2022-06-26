@@ -42,7 +42,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
       return;
     }
 
-    const frames = detailsGame.frames;
+    const { frames } = detailsGame;
 
     setLastFrame(windowGame.frames[windowGame.frames.length - 1]);
     setDetailsGame(frames[frames?.length - 1]);

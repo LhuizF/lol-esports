@@ -38,13 +38,20 @@ export const KDA = styled.div<Props>`
   }
 `;
 
-interface PropsItem extends Props {
-  isTrinket: boolean;
-}
+export const Item = styled.div`
+  margin: 0 2px;
+  position: relative;
 
-export const Item = styled.div<PropsItem>`
-  ${({ isTrinket }) => (isTrinket ? ' position: absolute' : ' position: static')};
+  p {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+`;
+
+export const Trinket = styled.div<Props>`
+  position: absolute;
+  margin: 0 2px;
   ${({ isReverse }) => (isReverse ? 'right: 0' : 'left: 0')};
   z-index: 1;
-  margin: 0 2px;
 `;

@@ -1,40 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Container, CS, KDA, Item } from './styles';
+import { Container, CS, KDA, Item, Trinket } from './styles';
 
 interface Props {
   player: Player;
   isReverse?: boolean;
-  items: any;
+  items: PlayerItem;
 }
 
 const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
-  const [itemsPlayer, setItemsPlayer] = useState([]);
+  const [itemsPlayer, setItemsPlayer] = useState<PlayerItem[]>([]);
 
   useEffect(() => {
-    const itemsPlayer = player.items
-      .map((i) => items[i])
+    const itensFormatted = player.items
+      .map((i) => {
+        return { ...items[i], id: i };
+      })
       .sort((a, b) => a.gold.total - b.gold.total);
+
+    const itemsPlayer = itensFormatted.map((item) => {
+      if (item.stacks >= 2) {
+        const stacksCurrent = player.items.filter((i) => i === item.id).length;
+        return { ...item, stacksCurrent: stacksCurrent };
+      }
+      return item;
+    });
 
     setItemsPlayer(itemsPlayer);
   }, [player, items]);
 
   return (
     <Container isReverse={isReverse}>
-      {itemsPlayer.map((item, index) => (
-        <Item
-          isReverse={isReverse}
-          key={index}
-          title={item.toString()}
-          isTrinket={item.tags.includes('Trinket')}
-        >
-          <Image
-            src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.image.full}`}
-            width={40}
-            height={40}
-          />
-        </Item>
-      ))}
+      {itemsPlayer.map((item, index) =>
+        !item.tags.includes('Trinket') ? (
+          <Item key={index} title={item.name}>
+            <Image
+              src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.id}.png`}
+              width={40}
+              height={40}
+            />
+            <p>{item.stacks && item.stacksCurrent}</p>
+          </Item>
+        ) : (
+          <Trinket isReverse={isReverse} key={index} title={item.name}>
+            <Image
+              src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.id}.png`}
+              width={40}
+              height={40}
+            />
+          </Trinket>
+        )
+      )}
 
       <KDA>
         <span>{player.kills}</span>
