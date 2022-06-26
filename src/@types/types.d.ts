@@ -165,3 +165,35 @@ interface DetailsParticipant extends ParticipantFrame {
   };
   abilities: Abilities[];
 }
+
+interface PlayerItem {
+  id?: number;
+  colloq: string;
+  depth: number;
+  description: string;
+  effect?: {
+    Effect1Amount: string;
+    Effect2Amount: string;
+    Effect3Amount: string;
+    Effect4Amount: string;
+  };
+  from: string[];
+  gold: { base: 50; purchasable: true; total: 2800; sell: 1120 };
+  image: {
+    full: string;
+    group: string;
+    h: number;
+    sprite: string;
+    w: number;
+    x: number;
+    y: number;
+  };
+  maps: { 11: boolean; 12: boolean; 21: boolean; 22: boolean };
+  name: string;
+  plaintext: string;
+  stats: { FlatPhysicalDamageMod: number; FlatArmorMod: number };
+  tags: string[];
+  stacks?: number;
+  consumed?: boolean;
+  stacksCurrent?: number;
+}
