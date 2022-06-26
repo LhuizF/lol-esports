@@ -19,28 +19,22 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
     setItemsPlayer(itemsPlayer);
   }, [player, items]);
 
-  const isTrinket = (item) => {
-    return ['Trinket', 'Vision'].map((code) => item.tags.includes(code)).includes(true);
-  };
-
   return (
     <Container isReverse={isReverse}>
-      {itemsPlayer.map((item, index) => {
-        return (
-          <Item
-            isReverse={isReverse}
-            key={index}
-            title={item.toString()}
-            isTrinket={isTrinket(item)}
-          >
-            <Image
-              src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.image.full}`}
-              width={40}
-              height={40}
-            />
-          </Item>
-        );
-      })}
+      {itemsPlayer.map((item, index) => (
+        <Item
+          isReverse={isReverse}
+          key={index}
+          title={item.toString()}
+          isTrinket={item.tags.includes('Trinket')}
+        >
+          <Image
+            src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.image.full}`}
+            width={40}
+            height={40}
+          />
+        </Item>
+      ))}
 
       <KDA>
         <span>{player.kills}</span>
