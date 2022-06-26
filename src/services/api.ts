@@ -20,4 +20,11 @@ export const apiGame = axios.create({
   params
 });
 
+export const apiDdragon = async (path: string) => {
+  const url = 'https://ddragon.leagueoflegends.com/';
+  const [version] = await axios.get(url + 'api/versions.json').then((res) => res.data);
+
+  return (await axios.get(`${url}cdn/${version}/data/pt_BR/${path}.json`)).data;
+};
+
 export default api;
