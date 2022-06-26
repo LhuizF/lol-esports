@@ -5,19 +5,19 @@ import ChampionsContainer from '../../Atoms/ChampionsContainer';
 interface Props {
   frame: Frame;
   details: DetailsParticipant[];
-  blueSize: TeamMetadata;
-  redSize: TeamMetadata;
+  gameMetadata: GameMetadata;
+  items: any;
 }
 
-const ChampionsTable: React.FC<Props> = ({ frame, blueSize, redSize, details }) => {
+const ChampionsTable: React.FC<Props> = ({ frame, gameMetadata, details, items }) => {
   const [playersBlue, setPlayersBlue] = useState<Player[]>([]);
   const [playersRed, setPlayersRed] = useState<Player[]>([]);
 
   useEffect(() => {
     const { blueTeam, redTeam } = frame;
 
-    setPlayersBlue(setPlayers(blueTeam.participants, blueSize));
-    setPlayersRed(setPlayers(redTeam.participants, redSize));
+    setPlayersBlue(setPlayers(blueTeam.participants, gameMetadata.blueTeamMetadata));
+    setPlayersRed(setPlayers(redTeam.participants, gameMetadata.redTeamMetadata));
   }, [frame]);
 
   const setPlayers = (team: ParticipantFrame[], size: TeamMetadata): Player[] => {
@@ -35,12 +35,12 @@ const ChampionsTable: React.FC<Props> = ({ frame, blueSize, redSize, details }) 
     <Container>
       <Team>
         {playersBlue.map((player, index) => (
-          <ChampionsContainer key={index} player={player} />
+          <ChampionsContainer key={index} player={player} items={items} />
         ))}
       </Team>
       <Team isReverse>
         {playersRed.map((player, index) => (
-          <ChampionsContainer key={index} player={player} isReverse />
+          <ChampionsContainer key={index} player={player} items={items} isReverse />
         ))}
       </Team>
     </Container>
