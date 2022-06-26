@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Container, CS, KDA, Item, Trinket } from './styles';
+import { Container, CS, KDA, Item, Trinket, Champion } from './styles';
 
 interface Props {
   player: Player;
@@ -39,7 +39,7 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
               width={40}
               height={40}
             />
-            <p>{item.stacks && item.stacksCurrent}</p>
+            <p>{item.stacks > 0 && item.stacksCurrent}</p>
           </Item>
         ) : (
           <Trinket isReverse={isReverse} key={index} title={item.name}>
@@ -58,12 +58,15 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
         <span>{player.assists}</span>
       </KDA>
       <CS>{player.creepScore}</CS>
-      <Image
-        title={`${player.summonerName} - ${player.championId}`}
-        src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${player.championId}.png`}
-        width={50}
-        height={50}
-      />
+      <Champion isDead={player.currentHealth === 0}>
+        <Image
+          title={`${player.summonerName} - ${player.championId}`}
+          src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${player.championId}.png`}
+          width={50}
+          height={50}
+        />
+        <p>{player.level}</p>
+      </Champion>
     </Container>
   );
 };

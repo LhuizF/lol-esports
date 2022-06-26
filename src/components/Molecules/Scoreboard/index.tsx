@@ -24,10 +24,6 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
   const [redGold, setRedGold] = useState<number>(0);
 
   useEffect(() => {
-    setBlueGold(frame.blueTeam.totalGold);
-  }, []);
-
-  useEffect(() => {
     if (!frame) return;
     setBlueTeam(frame.blueTeam);
     setRedTeam(frame.redTeam);
