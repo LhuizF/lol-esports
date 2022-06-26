@@ -10,6 +10,10 @@ export const Container = styled.div<Props>`
   flex-direction: ${({ isReverse }) => (isReverse ? 'row-reverse' : 'row')};
   padding: 0.2rem;
   color: ${({ theme }) => theme.colors.white};
+  box-sizing: border-box;
+  justify-content: flex-end;
+  width: 100%;
+  position: relative;
 `;
 
 export const CS = styled.div`
@@ -32,4 +36,12 @@ export const KDA = styled.div<Props>`
   }
 `;
 
-export const Item = styled.div``;
+interface PropsItem extends Props {
+  isTrinket: boolean;
+}
+
+export const Item = styled.div<PropsItem>`
+  ${({ isTrinket }) => (isTrinket ? ' position: absolute' : ' position: static')};
+  ${({ isReverse }) => (isReverse ? 'right: 0' : 'left: 0')};
+  z-index: 1;
+`;
