@@ -11,11 +11,14 @@ export function getDateFormatted() {
   return date.toISOString();
 }
 
-export function getGameState(gameState: GameState): string {
+export function getGameState(gameState: GameState | State): string {
   const states = {
     in_game: 'Ao vivo',
     finished: 'Finalizado',
-    paused: 'Pausado'
+    paused: 'Pausado',
+    inProgress: 'Em andamento',
+    completed: 'Completado',
+    unstarted: 'Não iniciado'
   };
 
   return states[gameState];

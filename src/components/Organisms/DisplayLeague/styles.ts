@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.grey};
   border-radius: 10px;
   padding: 22px;
-  height: 130px;
+  // height: 130px;
   margin-bottom: 20px;
 `;
 
@@ -20,8 +20,14 @@ export const League = styled.div`
 
 export const Game = styled.div`
   display: flex;
+  flex-direction: column;
+  color: ${({ theme }) => theme.colors.white};
   flex: 1;
   align-items: center;
   justify-content: center;
   border-left: 1px solid ${({ theme }) => theme.colors.red};
+
+  h3 {
+    margin-bottom: 0.5rem;
+  }
 `;
