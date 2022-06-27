@@ -12,13 +12,13 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
   const [itemsPlayer, setItemsPlayer] = useState<PlayerItem[]>([]);
 
   useEffect(() => {
-    const itensFormatted = player.items
+    const itensWithId = player.items
       .map((i) => {
         return { ...items[i], id: i };
       })
       .sort((a, b) => a.gold.total - b.gold.total);
 
-    const itemsPlayer = itensFormatted.map((item) => {
+    const itemsPlayer = itensWithId.map((item) => {
       if (item.stacks >= 2) {
         const stacksCurrent = player.items.filter((i) => i === item.id).length;
         return { ...item, stacksCurrent: stacksCurrent };

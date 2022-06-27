@@ -47,6 +47,7 @@ export const Item = styled.div`
     position: absolute;
     bottom: 0;
     right: 0;
+    line-height: 16px;
   }
 `;
 

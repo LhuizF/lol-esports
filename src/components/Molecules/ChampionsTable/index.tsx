@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Team } from './styles';
-import ChampionsContainer from '../../Atoms/ChampionsContainer';
+import ChampionsContainer from '../ChampionsContainer';
 
 interface Props {
   frame: Frame;
