@@ -18,7 +18,14 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
       })
       .sort((a, b) => a.gold.total - b.gold.total);
 
-    const itemsPlayer = itensWithId.map((item) => {
+    const newItems = new Set();
+    const filterItems = itensWithId.filter((item) => {
+      const duplicatedPerson = newItems.has(item.id);
+      newItems.add(item.id);
+      return !duplicatedPerson;
+    });
+
+    const itemsPlayer = filterItems.map((item) => {
       if (item.stacks >= 2) {
         const stacksCurrent = player.items.filter((i) => i === item.id).length;
         return { ...item, stacksCurrent: stacksCurrent };
