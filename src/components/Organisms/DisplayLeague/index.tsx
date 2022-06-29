@@ -21,7 +21,7 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
       </League>
       <Game>
         <h3>{getGameState(events.state)}</h3>
-        <a href={`game/${events.match.id}`} target="_blank" rel="noreferrer">
+        <a href={`game/${events.match.id}`}>
           <CardGame teams={events.match.teams} />
         </a>
       </Game>
