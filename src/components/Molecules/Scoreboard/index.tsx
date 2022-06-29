@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import DetailsIcon from '../../Atoms/DetailsIcon';
-import { Container, Content, Text } from './styles';
+import { Container, Content, Text, DragonsContainer, Detail } from './styles';
 import { SetGold } from '../../../utils';
+import DragonIcon from '../../Atoms/DragonIcon';
 
 interface Props {
   frame: Frame;
@@ -35,10 +36,21 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
   return (
     <Container>
       <Content>
-        <DetailsIcon name="inhibitor" color="blue" value={redTeam.inhibitors} />
-        <DetailsIcon name="baron" color="blue" value={blueTeam.barons} />
-        <DetailsIcon name="towers" color="blue" value={blueTeam.towers} />
-        <DetailsIcon name="coins" color="blue" value={blueGold.toLocaleString('pt-BR')} />
+        <Detail>
+          <DetailsIcon name="inhibitor" color="blue" value={redTeam.inhibitors} />
+          <DetailsIcon name="baron" color="blue" value={blueTeam.barons} />
+          <DetailsIcon name="towers" color="blue" value={blueTeam.towers} />
+          <DetailsIcon
+            name="coins"
+            color="blue"
+            value={blueGold.toLocaleString('pt-BR')}
+          />
+        </Detail>
+        <DragonsContainer>
+          {blueTeam.dragons.map((dragon, index) => (
+            <DragonIcon dragon={dragon} key={index} />
+          ))}
+        </DragonsContainer>
       </Content>
 
       <Text>
@@ -50,10 +62,17 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
       </Text>
 
       <Content>
-        <DetailsIcon name="coins" color="red" value={redGold.toLocaleString('pt-BR')} />
-        <DetailsIcon name="towers" color="red" value={redTeam.towers} />
-        <DetailsIcon name="baron" color="red" value={redTeam.barons} />
-        <DetailsIcon name="inhibitor" color="red" value={redTeam.inhibitors} />
+        <Detail>
+          <DetailsIcon name="coins" color="red" value={redGold.toLocaleString('pt-BR')} />
+          <DetailsIcon name="towers" color="red" value={redTeam.towers} />
+          <DetailsIcon name="baron" color="red" value={redTeam.barons} />
+          <DetailsIcon name="inhibitor" color="red" value={redTeam.inhibitors} />
+        </Detail>
+        <DragonsContainer isRevised>
+          {redTeam.dragons.map((dragon, index) => (
+            <DragonIcon dragon={dragon} key={index} />
+          ))}
+        </DragonsContainer>
       </Content>
     </Container>
   );

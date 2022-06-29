@@ -15,6 +15,8 @@ export const Container = styled.div<Props>`
   width: 100%;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
+  padding: 0.2rem;
+  box-sizing: border-box;
 `;
 
 export const CS = styled.div`
@@ -54,7 +56,9 @@ export const Item = styled.div`
 export const Trinket = styled.div<Props>`
   position: absolute;
   margin: 0 2px;
-  ${({ isReverse }) => (isReverse ? 'right: 0' : 'left: 0')};
+  height: 40px;
+
+  ${({ isReverse }) => (isReverse ? 'right: 0.2rem' : 'left: 0.2rem')};
   z-index: 1;
 `;
 
@@ -62,10 +66,11 @@ interface ChampionProps {
   isDead: boolean;
 }
 
-export const Champion = styled(Item) <ChampionProps>`
+export const Champion = styled(Item)<ChampionProps>`
   height: 50px;
   border: ${({ theme }) => theme.colors.black} 2px solid;
   ${({ isDead }) => isDead && 'filter: grayscale(1);'}
+
   p {
     background-color: ${({ theme }) => theme.colors.black};
   }
