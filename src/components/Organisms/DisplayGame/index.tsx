@@ -17,10 +17,11 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
   const [detailsGame, setDetailsGame] = useState<FramesDetails>();
   const [windowGame, setWindowGame] = useState<WindowGame>();
   const [loading, setLoading] = useState(true);
+  const [gameNotApi, setGameNotApi] = useState(false);
 
   const [blueSize, redSize] = match.teams;
 
-  const getGameWindow = async (gameId = '0') => {
+  const getGameWindow = async (gameId = '0', timer?) => {
     const params = {
       startingTime: getDateFormatted()
     };
@@ -36,9 +37,9 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
       .catch((err) => console.error(err.data));
 
     if (!windowGame || !detailsGame) {
-      console.log('windowGame', windowGame);
-      console.log('frames', detailsGame);
-      console.log('::: JOGO SEM API :::');
+      setGameNotApi(true);
+      timer && clearInterval(timer);
+      setLoading(false);
       return;
     }
 
@@ -54,15 +55,20 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
     if (!match) return;
     const id = match.games[gameNumber].id;
     getGameWindow(id);
-    setInterval(() => {
-      getGameWindow(id);
+
+    const timer = setInterval(() => {
+      getGameWindow(id, timer);
     }, 6000);
+
+    return () => clearInterval(timer);
   }, [match, gameNumber]);
+
+  if (loading) return <div>loading...</div>;
 
   return (
     <Container>
-      {loading ? (
-        <Text>Jogo ainda não inciado</Text>
+      {gameNotApi && !loading ? (
+        <Text>Jogo sem api ou não iniciado</Text>
       ) : (
         <>
           <Header>
