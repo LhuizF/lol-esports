@@ -37,7 +37,7 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
     <Container>
       <Content>
         <Detail>
-          <DetailsIcon name="inhibitor" color="blue" value={redTeam.inhibitors} />
+          <DetailsIcon name="inhibitor" color="blue" value={blueTeam.inhibitors} />
           <DetailsIcon name="baron" color="blue" value={blueTeam.barons} />
           <DetailsIcon name="towers" color="blue" value={blueTeam.towers} />
           <DetailsIcon
