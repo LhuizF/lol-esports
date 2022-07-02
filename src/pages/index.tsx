@@ -9,11 +9,12 @@ import Title from '../components/Atoms/Title';
 
 const Home: NextPage = () => {
   const [liveGames, setLiveGames] = useState<EventGame[]>([]);
+  const [schedule, setSchedule] = useState<EventGame[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setInterval(() => {
-      api.get('/getLive?hl=pt-BR').then((res) => {
+      api.get('/getLive').then((res) => {
         const { events }: Schedule = res.data.data.schedule;
         const gamesLol = events.filter((event) => !!event.match);
         setLiveGames(gamesLol);

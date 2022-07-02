@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Container, CS, KDA, Item, Trinket, Champion } from './styles';
+import ChampionContainer from '../../Atoms/Champion';
 
 interface Props {
   player: Player;
   isReverse?: boolean;
-  items: PlayerItem;
+  ddragon: Ddragon;
 }
 
-const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
+const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
   const [itemsPlayer, setItemsPlayer] = useState<PlayerItem[]>([]);
 
   useEffect(() => {
+    const { items } = ddragon;
+
     const itensWithId = player.items
       .map((i) => {
         return { ...items[i], id: i };
@@ -34,7 +37,7 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
     });
 
     setItemsPlayer(itemsPlayer);
-  }, [player, items]);
+  }, [player, ddragon]);
 
   return (
     <Container isReverse={isReverse}>
@@ -65,17 +68,9 @@ const ChampionsContainer: React.FC<Props> = ({ player, isReverse, items }) => {
         <span>{player.assists}</span>
       </KDA>
       <CS>{player.creepScore}</CS>
-      <Champion isDead={player.currentHealth === 0}>
-        <Image
-          title={`${player.summonerName} - ${player.championId}`}
-          src={`http://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/${player.championId}.png`}
-          width={50}
-          height={50}
-        />
-        <p>{player.level}</p>
-      </Champion>
+      <ChampionContainer player={player} runes={ddragon.runes} />
     </Container>
   );
 };
 
-export default ChampionsContainer;
+export default PlayersContainer;

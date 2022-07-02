@@ -11,7 +11,7 @@ const Game: NextPage = () => {
   const [gameNumber, setGameNumber] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState<string>('');
-  const [items, setItems] = useState();
+  const [ddragon, setDdragon] = useState<Ddragon>();
 
   const router = useRouter();
   const { id } = router.query;
@@ -29,10 +29,16 @@ const Game: NextPage = () => {
       setEvents(events);
       const codeTeams = events.match.teams.map((team) => team.code).join(' vs ');
       setTitle(codeTeams);
-      setLoading(false);
 
-      const items = await apiDdragon('item');
-      setItems(items.data);
+      const ddragon = await (async () => {
+        const items = await apiDdragon('item');
+        const runes = await apiDdragon('runesReforged');
+
+        return { items: items.data, runes };
+      })();
+
+      setDdragon(ddragon);
+      setLoading(false);
     };
 
     getDate();
@@ -50,7 +56,7 @@ const Game: NextPage = () => {
             name={events?.league.name}
             size={80}
           />
-          <DisplayGame match={events.match} gameNumber={gameNumber} items={items} />
+          <DisplayGame match={events.match} gameNumber={gameNumber} ddragon={ddragon} />
         </>
       )}
     </Main>

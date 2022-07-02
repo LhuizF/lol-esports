@@ -14,7 +14,6 @@ export const Content = styled.div`
   flex-direction: column;
   width: 40%;
   align-items: flex-end;
-  border: 1px solid red;
 `;
 
 interface Props {
@@ -25,13 +24,12 @@ export const DragonsContainer = styled.div<Props>`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: ${({ isRevised }) => (isRevised ? 'flex-end' : 'flex-start')};
+  justify-content: ${({ isRevised }) => (isRevised ? 'flex-start' : 'flex-end')};
 `;
 
 export const Detail = styled.div`
   display: flex;
   width: 100%;
-  background-color: pink;
 `;
 
 export const Text = styled.div`

@@ -9,10 +9,10 @@ import { apiGame } from '../../../services/api';
 interface Props {
   match: Match;
   gameNumber: number;
-  items: any;
+  ddragon: Ddragon;
 }
 
-const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
+const DisplayGame: React.FC<Props> = ({ match, gameNumber, ddragon }) => {
   const [lastFrame, setLastFrame] = useState<Frame>();
   const [detailsGame, setDetailsGame] = useState<FramesDetails>();
   const [windowGame, setWindowGame] = useState<WindowGame>();
@@ -80,7 +80,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, items }) => {
             frame={lastFrame}
             details={detailsGame.participants}
             gameMetadata={windowGame.gameMetadata}
-            items={items}
+            ddragon={ddragon}
           />
         </>
       )}
