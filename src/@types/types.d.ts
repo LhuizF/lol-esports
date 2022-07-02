@@ -130,7 +130,7 @@ interface ParticipantFrame {
   maxHealth: number;
 }
 
-interface Player extends DetailsParticipant, ParticipantMetadata {}
+interface Player extends DetailsParticipant, ParticipantMetadata { }
 
 type Abilities = 'Q' | 'W' | 'E' | 'R';
 
@@ -201,4 +201,22 @@ interface PlayerItem {
 interface Ddragon {
   items: any;
   runes: any;
+}
+
+interface PlayerRunes {
+  runes: {
+    icon: string;
+    name: string;
+    id: number;
+    key: string;
+    longDesc: string;
+    shortDesc: string;
+  };
+  subRunes: {
+    icon: string;
+    name: string;
+    id: number;
+    key: string;
+    slots: any[];
+  };
 }
