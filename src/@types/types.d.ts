@@ -197,3 +197,8 @@ interface PlayerItem {
   consumed?: boolean;
   stacksCurrent?: number;
 }
+
+interface Ddragon {
+  items: any;
+  runes: any;
+}
