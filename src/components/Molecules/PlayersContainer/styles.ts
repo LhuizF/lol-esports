@@ -16,7 +16,6 @@ export const Container = styled.div<Props>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
   padding: 0.2rem;
-  box-sizing: border-box;
 `;
 
 export const CS = styled.div`
@@ -66,7 +65,7 @@ interface ChampionProps {
   isDead: boolean;
 }
 
-export const Champion = styled(Item) <ChampionProps>`
+export const Champion = styled(Item)<ChampionProps>`
   height: 50px;
   border: ${({ theme }) => theme.colors.black} 2px solid;
   ${({ isDead }) => isDead && 'filter: grayscale(1);'}
@@ -76,6 +75,10 @@ export const Champion = styled(Item) <ChampionProps>`
   }
 `;
 
-export const Content = styled.div`
-  border: 1px solid red;
+interface PropsA {
+  flex?: number;
+}
+
+export const Content = styled.div<PropsA>`
+  ${({ flex }) => flex && `flex: ${flex};`}
 `;
