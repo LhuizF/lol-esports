@@ -7,11 +7,10 @@ interface Props {
 export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
-  flex-direction: ${({ isReverse }) => (isReverse ? 'row-reverse' : 'row')};
+  flex-direction: ${({ isReverse }) => (isReverse ? 'row' : 'row-reverse')};
   margin: 0.2rem;
   color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
-  justify-content: flex-end;
   width: 100%;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};

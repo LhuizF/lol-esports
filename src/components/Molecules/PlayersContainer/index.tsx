@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import { Container, CS, KDA, Item, Trinket, Content } from './styles';
 import Champion from '../../Atoms/Champion';
 import Runes from '../../Atoms/Runes';
@@ -14,6 +13,11 @@ interface Props {
 const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
   return (
     <Container isReverse={isReverse}>
+      <Content>
+        <Champion player={player} />
+        <Runes player={player} runes={ddragon.runes} />
+      </Content>
+
       <Content flex={1}>
         <Items player={player} ddragon={ddragon} isReverse={isReverse} />
       </Content>
@@ -24,10 +28,6 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
         <span>{player.assists}</span>
       </KDA>
       <CS>{player.creepScore}</CS> */}
-      <Content>
-        <Champion player={player} />
-        <Runes player={player} runes={ddragon.runes} />
-      </Content>
     </Container>
   );
 };
