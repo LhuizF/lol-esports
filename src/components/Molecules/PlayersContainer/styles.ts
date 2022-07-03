@@ -66,7 +66,7 @@ interface ChampionProps {
   isDead: boolean;
 }
 
-export const Champion = styled(Item)<ChampionProps>`
+export const Champion = styled(Item) <ChampionProps>`
   height: 50px;
   border: ${({ theme }) => theme.colors.black} 2px solid;
   ${({ isDead }) => isDead && 'filter: grayscale(1);'}
@@ -74,4 +74,8 @@ export const Champion = styled(Item)<ChampionProps>`
   p {
     background-color: ${({ theme }) => theme.colors.black};
   }
+`;
+
+export const Content = styled.div`
+  border: 1px solid red;
 `;
