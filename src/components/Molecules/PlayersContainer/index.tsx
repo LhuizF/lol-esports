@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container, CS, KDA, Item, Trinket, Content } from './styles';
+
 import Champion from '../../Atoms/Champion';
 import Runes from '../../Atoms/Runes';
 import Items from '../../Atoms/Items';
+import Life from '../../Atoms/Health';
 
 interface Props {
   player: Player;
@@ -19,6 +21,7 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
       </Content>
 
       <Content flex={1}>
+        <Life player={player} isReverse={isReverse} />
         <Items player={player} ddragon={ddragon} isReverse={isReverse} />
       </Content>
 

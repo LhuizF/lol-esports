@@ -12,6 +12,7 @@ export const Container = styled.div<Props>`
   justify-content: flex-end;
   position: relative;
   padding: 0.2rem;
+  height: 40px;
 `;
 
 export const Item = styled(ItemContainer)``;
