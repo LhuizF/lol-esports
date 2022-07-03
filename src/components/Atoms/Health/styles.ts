@@ -21,19 +21,16 @@ export const Container = styled.div<Props>`
     span {
       width: ${({ currentHealth }) => `${currentHealth}%`};
       height: 20px;
-      text-align: center;
       background-color: ${({ theme }) => theme.colors.life};
-      display: flex;
-      align-items: center;
-      justify-content: center;
       transition: all 1s ease-in-out;
     }
   }
 
   p {
     position: absolute;
+    width: 100%;
+    text-align: center;
     top: 50%;
-    left: 50%;
+    height: 20px;
   }
 `;
-
