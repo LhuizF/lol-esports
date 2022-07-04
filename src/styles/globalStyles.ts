@@ -28,4 +28,10 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
 `;
