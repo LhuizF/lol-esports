@@ -56,7 +56,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, ddragon }) => {
     getGameWindow(id);
     setInterval(() => {
       getGameWindow(id);
-    }, 6000);
+    }, 600);
   }, [match, gameNumber]);
 
   return (
