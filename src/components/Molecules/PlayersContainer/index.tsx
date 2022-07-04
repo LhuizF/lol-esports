@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, CS, KDA, Item, Trinket, Content } from './styles';
+import { Container, Item, Content, ButtonContainer } from './styles';
+import { IoIosArrowDown } from 'react-icons/io';
 
 import Champion from '../../Atoms/Champion';
 import Runes from '../../Atoms/Runes';
 import Items from '../../Atoms/Items';
-import Life from '../../Atoms/Health';
+import Health from '../../Atoms/Health';
 
 interface Props {
   player: Player;
@@ -21,16 +22,26 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
       </Content>
 
       <Content flex={1}>
-        <Life player={player} isReverse={isReverse} />
+        <Health player={player} isReverse={isReverse} />
         <Items player={player} ddragon={ddragon} isReverse={isReverse} />
       </Content>
 
-      {/* <KDA>
-        <span>{player.kills}</span>
-        <span>{player.deaths}</span>
-        <span>{player.assists}</span>
-      </KDA>
-      <CS>{player.creepScore}</CS> */}
+      <Content>
+        <Item isReverse={isReverse}>
+          <div>
+            <span>{player.kills}</span>
+            <span>{player.deaths}</span>
+            <span>{player.assists}</span>
+          </div>
+
+          <p>{player.creepScore}</p>
+        </Item>
+      </Content>
+      <ButtonContainer>
+        <button>
+          <IoIosArrowDown size={30} />
+        </button>
+      </ButtonContainer>
     </Container>
   );
 };

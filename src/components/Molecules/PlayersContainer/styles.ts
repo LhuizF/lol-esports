@@ -8,76 +8,64 @@ export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
   flex-direction: ${({ isReverse }) => (isReverse ? 'row' : 'row-reverse')};
-  margin: 0.2rem;
+  margin: 8px;
   color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
   width: 100%;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
-  padding: 0.2rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 `;
 
-export const CS = styled.div`
+export const Item = styled.div<Props>`
+  height: 50%;
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  flex-direction: ${({ isReverse }) => (isReverse ? 'row' : 'row-reverse')};
+  padding: 4px 0;
   box-sizing: border-box;
-  width: 40px;
-`;
 
-export const KDA = styled.div<Props>`
-  display: flex;
-  align-items: center;
-  border-left: 2px solid ${({ theme }) => theme.colors.white};
-  border-right: 2px solid ${({ theme }) => theme.colors.white};
-  margin: 0 1rem;
-
-  span {
+  div {
+    margin-right: 10px;
     display: flex;
-    justify-content: center;
-    width: 25px;
-  }
-`;
+    align-items: center;
+    border-left: 2px solid ${({ theme }) => theme.colors.white};
+    border-right: 2px solid ${({ theme }) => theme.colors.white};
 
-export const Item = styled.div`
-  margin: 0 2px;
-  position: relative;
-  height: 40px;
+    span {
+      display: flex;
+      justify-content: center;
+      min-width: 20px;
+    }
+  }
 
   p {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    line-height: 16px;
+    text-align: center;
+    width: 40px;
   }
 `;
 
-export const Trinket = styled.div<Props>`
-  position: absolute;
-  margin: 0 2px;
-  height: 40px;
-
-  ${({ isReverse }) => (isReverse ? 'right: 0.2rem' : 'left: 0.2rem')};
-  z-index: 1;
-`;
-
-interface ChampionProps {
-  isDead: boolean;
-}
-
-export const Champion = styled(Item)<ChampionProps>`
-  height: 50px;
-  border: ${({ theme }) => theme.colors.black} 2px solid;
-  ${({ isDead }) => isDead && 'filter: grayscale(1);'}
-
-  p {
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-`;
-
-interface PropsA {
+interface ContentProps {
   flex?: number;
 }
 
-export const Content = styled.div<PropsA>`
+export const Content = styled.div<ContentProps>`
   ${({ flex }) => flex && `flex: ${flex};`}
+  height: 100%;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px;
+
+  button {
+    color: ${({ theme }) => theme.colors.white};
+    width: fit-content;
+    height: fit-content;
+  }
 `;
