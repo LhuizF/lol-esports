@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-  padding: 0.2rem;
+  padding: 4px;
   display: flex;
   flex-direction: column;
   align-items: ${({ isReverse }) => (isReverse ? 'flex-start' : 'flex-end')};

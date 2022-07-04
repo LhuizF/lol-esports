@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   background-color: ${({ theme }) => theme.colors.greySecondary};
   width: 100%;
   display: flex;

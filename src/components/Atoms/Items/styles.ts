@@ -11,7 +11,7 @@ export const Container = styled.div<Props>`
   flex-direction: ${({ isReverse }) => (isReverse ? 'row-reverse' : 'row')};
   justify-content: flex-end;
   position: relative;
-  padding: 0.2rem;
+  padding: 4px;
   height: 40px;
 `;
 
