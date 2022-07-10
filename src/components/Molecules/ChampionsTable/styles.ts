@@ -4,7 +4,9 @@ export const Container = styled.div`
   margin-top: 0.5rem;
   background-color: ${({ theme }) => theme.colors.greySecondary};
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
 `;
 
 interface Props {
@@ -12,8 +14,6 @@ interface Props {
 }
 
 export const Team = styled.div<Props>`
-  display: flex;
-  flex-direction: column;
-  align-items: ${({ isReverse }) => (isReverse ? 'flex-start' : 'flex-end')};
-  flex: 1;
+  display: grid;
+  grid-row-gap: 10px;
 `;

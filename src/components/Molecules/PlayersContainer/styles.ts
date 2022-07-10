@@ -8,10 +8,8 @@ export const Container = styled.div<Props>`
   display: flex;
   align-items: center;
   flex-direction: ${({ isReverse }) => (isReverse ? 'row' : 'row-reverse')};
-  margin: 8px;
   color: ${({ theme }) => theme.colors.white};
   box-sizing: border-box;
-  width: 100%;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
 

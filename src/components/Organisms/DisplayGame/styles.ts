@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-top: 2rem;
   background-color: ${({ theme }) => theme.colors.greySecondary};
-  width: 100%;
+  margin-top: 2rem;
+  width: 80%;
   padding: 2rem;
   box-sizing: border-box;
 `;

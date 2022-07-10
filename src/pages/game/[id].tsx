@@ -47,13 +47,14 @@ const Game: NextPage = () => {
 
   return (
     <>
-      <Navbar league={events?.league} />
-
-      <Main title={title}>
+      <Main title={title} isGame>
         {loading ? (
           <div>loading</div>
         ) : (
-          <DisplayGame match={events.match} gameNumber={gameNumber} ddragon={ddragon} />
+          <>
+            <Navbar league={events?.league} />
+            <DisplayGame match={events.match} gameNumber={gameNumber} ddragon={ddragon} />
+          </>
         )}
       </Main>
     </>

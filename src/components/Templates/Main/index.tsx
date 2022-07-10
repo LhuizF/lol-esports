@@ -5,17 +5,16 @@ import { Container, Content } from './styles';
 interface Props {
   children: React.ReactNode;
   title: string;
+  isGame?: boolean;
 }
 
-const Main: React.FC<Props> = ({ children, title }) => {
+const Main: React.FC<Props> = ({ children, title, isGame }) => {
   return (
     <>
       <Head>
         <title>{title ? `Esports Live - ${title}` : 'Esports Live'}</title>
       </Head>
-      <Container>
-        <Content>{children}</Content>
-      </Container>
+      <Container>{isGame ? children : <Content>{children}</Content>}</Container>
     </>
   );
 };
