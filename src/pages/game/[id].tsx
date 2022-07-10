@@ -5,6 +5,7 @@ import Main from '../../components/Templates/Main';
 import { api, apiDdragon } from '../../services/api';
 import Logo from '../../components/Atoms/Logo';
 import DisplayGame from '../../components/Organisms/DisplayGame';
+import Navbar from '../../components/Molecules/Navbar';
 
 const Game: NextPage = () => {
   const [events, setEvents] = useState<EventGame>();
@@ -45,21 +46,17 @@ const Game: NextPage = () => {
   }, [id]);
 
   return (
-    <Main title={title}>
-      {loading ? (
-        <div>loading</div>
-      ) : (
-        <>
-          <Logo
-            height={120}
-            image={events?.league.image}
-            name={events?.league.name}
-            size={80}
-          />
+    <>
+      <Navbar league={events?.league} />
+
+      <Main title={title}>
+        {loading ? (
+          <div>loading</div>
+        ) : (
           <DisplayGame match={events.match} gameNumber={gameNumber} ddragon={ddragon} />
-        </>
-      )}
-    </Main>
+        )}
+      </Main>
+    </>
   );
 };
 
