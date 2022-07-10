@@ -6,6 +6,7 @@ import { api, apiDdragon } from '../../services/api';
 import Logo from '../../components/Atoms/Logo';
 import DisplayGame from '../../components/Organisms/DisplayGame';
 import Navbar from '../../components/Molecules/Navbar';
+import Loading from '../../components/Atoms/Loading';
 
 const Game: NextPage = () => {
   const [events, setEvents] = useState<EventGame>();
@@ -49,7 +50,7 @@ const Game: NextPage = () => {
     <>
       <Main title={title} isGame>
         {loading ? (
-          <div>loading</div>
+          <Loading />
         ) : (
           <>
             <Navbar league={events?.league} />

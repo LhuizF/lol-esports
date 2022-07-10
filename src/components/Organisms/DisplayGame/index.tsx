@@ -5,6 +5,7 @@ import Logo from '../../Atoms/Logo';
 import Scoreboard from '../../Molecules/Scoreboard';
 import ChampionsTable from '../../Molecules/ChampionsTable';
 import { apiGame } from '../../../services/api';
+import Loading from '../../Atoms/Loading';
 
 interface Props {
   match: Match;
@@ -17,6 +18,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, ddragon }) => {
   const [detailsGame, setDetailsGame] = useState<FramesDetails>();
   const [windowGame, setWindowGame] = useState<WindowGame>();
   const [loading, setLoading] = useState(true);
+  const [noApi, setNoApi] = useState(false);
 
   const [blueSize, redSize] = match.teams;
 
@@ -36,9 +38,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, ddragon }) => {
       .catch((err) => console.error(err.data));
 
     if (!windowGame || !detailsGame) {
-      console.log('windowGame', windowGame);
-      console.log('frames', detailsGame);
-      console.log('::: JOGO SEM API :::');
+      setLoading(false);
       return;
     }
 
@@ -59,9 +59,19 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, ddragon }) => {
     }, 600);
   }, [match, gameNumber]);
 
+  useEffect(() => {
+    if (!lastFrame || !detailsGame || !windowGame) {
+      setNoApi(true);
+      return;
+    }
+    setNoApi(false);
+  }, [lastFrame, detailsGame, windowGame]);
+
+  if (loading) return <Loading />;
+
   return (
     <Container>
-      {loading ? (
+      {noApi ? (
         <Text>Jogo ainda não inciado</Text>
       ) : (
         <>
