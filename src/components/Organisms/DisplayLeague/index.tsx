@@ -3,6 +3,7 @@ import CardGame from '../../Molecules/CardGame';
 import { Container, League, Game } from './styles';
 import Logo from '../../Atoms/Logo';
 import { getGameState } from '../../../utils';
+import Link from 'next/link';
 
 interface Props {
   events: EventGame;
@@ -21,9 +22,11 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
       </League>
       <Game>
         <h3>{getGameState(events.state)}</h3>
-        <a href={`game/${events.match.id}`}>
-          <CardGame teams={events.match.teams} />
-        </a>
+        <Link href={`game/${events.match.id}`}>
+          <a href={`game/${events.match.id}`}>
+            <CardGame teams={events.match.teams} />
+          </a>
+        </Link>
       </Game>
     </Container>
   );
