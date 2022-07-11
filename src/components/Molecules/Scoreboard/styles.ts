@@ -22,9 +22,10 @@ interface Props {
 
 export const DragonsContainer = styled.div<Props>`
   display: flex;
+  flex-direction: row-reverse;
   width: 100%;
   align-items: center;
-  justify-content: ${({ isRevised }) => (isRevised ? 'flex-start' : 'flex-end')};
+  justify-content: ${({ isRevised }) => (isRevised ? 'flex-end' : 'flex-start')};
 `;
 
 export const Detail = styled.div`
