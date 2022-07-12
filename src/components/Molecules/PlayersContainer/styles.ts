@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface Props {
   isReverse?: boolean;
+  border?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -12,31 +13,28 @@ export const Container = styled.div<Props>`
   box-sizing: border-box;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
-
-  &:first-of-type {
-    margin-top: 0;
-  }
 `;
 
 export const Item = styled.div<Props>`
-  height: 50%;
   display: flex;
   align-items: flex-end;
   flex-direction: ${({ isReverse }) => (isReverse ? 'row' : 'row-reverse')};
   padding: 4px 0;
   box-sizing: border-box;
+  align-items: center;
+  flex-direction: column;
 
   div {
     margin-right: 10px;
     display: flex;
-    align-items: center;
-    border-left: 2px solid ${({ theme }) => theme.colors.white};
-    border-right: 2px solid ${({ theme }) => theme.colors.white};
+    /* border-left: 2px solid ${({ theme }) => theme.colors.white};
+    border-right: 2px solid ${({ theme }) => theme.colors.white}; */
+    width: 80px;
+    box-sizing: border-box;
 
     span {
-      display: flex;
-      justify-content: center;
-      min-width: 20px;
+      text-align: center;
+      width: 65px;
     }
   }
 
@@ -48,10 +46,12 @@ export const Item = styled.div<Props>`
 
 interface ContentProps {
   flex?: number;
+  minWidth?: number;
 }
 
 export const Content = styled.div<ContentProps>`
   ${({ flex }) => flex && `flex: ${flex};`}
+  ${({ minWidth }) => minWidth && `min-width: ${minWidth}px;`}
   height: 100%;
 `;
 
@@ -59,7 +59,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 4px;
+  margin: 0 1rem;
 
   button {
     color: ${({ theme }) => theme.colors.white};

@@ -28,7 +28,7 @@ export const Container = styled.div<Props>`
 
   p {
     position: absolute;
-    width: 100%;
+    width: calc(100% - 8px);
     text-align: center;
     top: 50%;
     height: 20px;

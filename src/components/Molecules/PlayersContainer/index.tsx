@@ -21,22 +21,40 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
         <Runes player={player} runes={ddragon.runes} />
       </Content>
 
-      <Content flex={1}>
+      <Content flex={1} minWidth={320}>
         <Health player={player} isReverse={isReverse} />
         <Items player={player} ddragon={ddragon} isReverse={isReverse} />
       </Content>
 
       <Content>
         <Item isReverse={isReverse}>
+          <div title="KDA">
+            <span>K</span>
+            <span>D</span>
+            <span>A</span>
+          </div>
           <div>
             <span>{player.kills}</span>
             <span>{player.deaths}</span>
             <span>{player.assists}</span>
           </div>
-
-          <p>{player.creepScore}</p>
         </Item>
       </Content>
+
+      <Content>
+        <Item>
+          <p>CS</p>
+          {player.creepScore}
+        </Item>
+      </Content>
+
+      <Content>
+        <Item title="Ouro total">
+          <p>Ouro</p>
+          {player.totalGold}
+        </Item>
+      </Content>
+
       <ButtonContainer>
         <button>
           <IoIosArrowDown size={30} />
