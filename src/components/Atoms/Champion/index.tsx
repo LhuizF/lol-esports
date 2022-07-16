@@ -7,11 +7,13 @@ interface Props {
 }
 
 const ChampionContainer: React.FC<Props> = ({ player }) => {
+  const version = localStorage.getItem('version');
+
   return (
     <Container isDead={player.currentHealth === 0}>
       <Image
         title={`${player.summonerName} - ${player.championId}`}
-        src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/champion/${player.championId}.png`}
+        src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${player.championId}.png`}
         width={50}
         height={50}
       />

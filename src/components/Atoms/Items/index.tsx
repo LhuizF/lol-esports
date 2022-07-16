@@ -12,6 +12,8 @@ interface Props {
 const Items: React.FC<Props> = ({ player, isReverse, ddragon }) => {
   const [itemsPlayer, setItemsPlayer] = useState<PlayerItem[]>([]);
 
+  const version = localStorage.getItem('version');
+
   useEffect(() => {
     const { items } = ddragon;
 
@@ -45,7 +47,7 @@ const Items: React.FC<Props> = ({ player, isReverse, ddragon }) => {
         !item.tags.includes('Trinket') ? (
           <Item key={index} title={item.name}>
             <Image
-              src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.id}.png`}
+              src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
               width={40}
               height={40}
             />
@@ -54,7 +56,7 @@ const Items: React.FC<Props> = ({ player, isReverse, ddragon }) => {
         ) : (
           <Trinket isReverse={isReverse} key={index} title={item.name}>
             <Image
-              src={`http://ddragon.leagueoflegends.com/cdn/12.12.1/img/item/${item.id}.png`}
+              src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
               width={40}
               height={40}
             />

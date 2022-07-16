@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NextPage } from 'next';
-import api from '../services/api';
+import api, { getVersion } from '../services/api';
 import Main from '../components/Templates/Main';
 import DisplayLeague from '../components/Organisms/DisplayLeague';
 import Loading from '../components/Atoms/Loading';
@@ -12,6 +12,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    getVersion();
     setInterval(() => {
       api.get('/getLive').then((res) => {
         const { events }: Schedule = res.data.data.schedule;
