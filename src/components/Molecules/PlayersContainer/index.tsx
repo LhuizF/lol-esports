@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Item, Content, ButtonContainer } from './styles';
+import React, { useEffect } from 'react';
+import { Container, Item, Content, ButtonContainer, GoldContainer } from './styles';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import Champion from '../../Atoms/Champion';
@@ -29,9 +29,9 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
       <Content>
         <Item isReverse={isReverse}>
           <div title="KDA">
-            <span>K</span>
-            <span>D</span>
-            <span>A</span>
+            <p>K</p>
+            <p>D</p>
+            <p>A</p>
           </div>
           <div>
             <span>{player.kills}</span>
@@ -44,22 +44,23 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
       <Content>
         <Item>
           <p>CS</p>
-          {player.creepScore}
+          <span>{player.creepScore}</span>
         </Item>
       </Content>
 
       <Content>
-        <Item title="Ouro total">
+        <GoldContainer isPositive={player.goldGap > 0}>
           <p>Ouro</p>
-          {player.totalGold}
-        </Item>
+          <span title="Ouro total">{player.totalGold}</span>
+          <span title="Diferença de ouro">{player.goldGap}</span>
+        </GoldContainer>
       </Content>
 
-      <ButtonContainer>
+      {/* <ButtonContainer>
         <button>
           <IoIosArrowDown size={30} />
         </button>
-      </ButtonContainer>
+      </ButtonContainer> */}
     </Container>
   );
 };

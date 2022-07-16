@@ -130,7 +130,9 @@ interface ParticipantFrame {
   maxHealth: number;
 }
 
-interface Player extends DetailsParticipant, ParticipantMetadata {}
+interface Player extends DetailsParticipant, ParticipantMetadata {
+  goldGap: number;
+}
 
 type Abilities = 'Q' | 'W' | 'E' | 'R';
 

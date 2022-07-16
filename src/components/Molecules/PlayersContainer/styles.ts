@@ -23,24 +23,26 @@ export const Item = styled.div<Props>`
   box-sizing: border-box;
   align-items: center;
   flex-direction: column;
+  margin: 0 5px;
 
   div {
-    margin-right: 10px;
     display: flex;
     /* border-left: 2px solid ${({ theme }) => theme.colors.white};
     border-right: 2px solid ${({ theme }) => theme.colors.white}; */
-    width: 80px;
+    width: 50px;
     box-sizing: border-box;
+    align-items: center;
+  }
 
-    span {
-      text-align: center;
-      width: 65px;
-    }
+  span {
+    text-align: center;
+    margin-top: 4px;
+    flex: 1;
   }
 
   p {
     text-align: center;
-    width: 40px;
+    flex: 1;
   }
 `;
 
@@ -59,11 +61,22 @@ export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 
   button {
     color: ${({ theme }) => theme.colors.white};
     width: fit-content;
     height: fit-content;
+  }
+`;
+
+interface GoldProps {
+  isPositive?: boolean;
+}
+
+export const GoldContainer = styled(Item)<GoldProps>`
+  span:last-of-type {
+    color: ${({ isPositive, theme }) =>
+      isPositive ? theme.colors.positive : theme.colors.negative};
   }
 `;

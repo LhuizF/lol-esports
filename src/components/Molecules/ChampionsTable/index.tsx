@@ -17,18 +17,30 @@ const ChampionsTable: React.FC<Props> = ({ frame, gameMetadata, details, ddragon
     const { blueTeam, redTeam } = frame;
     const { blueTeamMetadata, redTeamMetadata } = gameMetadata;
 
-    setPlayersBlue(setPlayers(blueTeam.participants, blueTeamMetadata));
-    setPlayersRed(setPlayers(redTeam.participants, redTeamMetadata));
+    setPlayersBlue(
+      setPlayers(blueTeam.participants, blueTeamMetadata, redTeam.participants)
+    );
+    setPlayersRed(
+      setPlayers(redTeam.participants, redTeamMetadata, blueTeam.participants)
+    );
   }, [frame]);
 
-  const setPlayers = (team: ParticipantFrame[], size: TeamMetadata): Player[] => {
+  const setPlayers = (
+    team: ParticipantFrame[],
+    size: TeamMetadata,
+    rival: ParticipantFrame[]
+  ): Player[] => {
     const { participantMetadata } = size;
     return team.map((player, i) => {
       const [detail] = details.filter(
         (detail) => detail.participantId === player.participantId
       );
 
-      return { ...player, ...participantMetadata[i], ...detail };
+      const rivalTotalGold = rival[i].totalGold;
+
+      const goldGap = player.totalGold - rivalTotalGold;
+
+      return { ...player, ...participantMetadata[i], ...detail, goldGap };
     });
   };
 

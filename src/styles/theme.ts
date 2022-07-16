@@ -7,6 +7,8 @@ export const theme = {
     white: '#EFEFEF',
     blueTeam: '#1580B6',
     redTeam: '#DE2F2F',
-    life: '#05A100'
+    life: '#05A100',
+    positive: '#00B200',
+    negative: '#FF0000'
   }
 };
