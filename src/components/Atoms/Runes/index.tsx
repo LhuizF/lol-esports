@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 interface Props {
   player: Player;
-  runes: any;
+  runes: RunesDdragon[];
 }
 
 const initialRunes: PlayerRunes = {

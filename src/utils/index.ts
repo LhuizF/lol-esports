@@ -24,7 +24,11 @@ export function getGameState(gameState: GameState | State): string {
   return states[gameState];
 }
 
-export function SetGold(gold: number, newGold: number, setNewGold: any): void {
+export function SetGold(
+  gold: number,
+  newGold: number,
+  setNewGold: (x: number) => void
+): void {
   const dif = newGold - gold;
 
   if (dif > 2000) {

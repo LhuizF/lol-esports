@@ -130,7 +130,7 @@ interface ParticipantFrame {
   maxHealth: number;
 }
 
-interface Player extends DetailsParticipant, ParticipantMetadata { }
+interface Player extends DetailsParticipant, ParticipantMetadata {}
 
 type Abilities = 'Q' | 'W' | 'E' | 'R';
 
@@ -182,13 +182,13 @@ interface PlayerItem {
   image: {
     full: string;
     group: string;
-    h: number;
     sprite: string;
+    h: number;
     w: number;
     x: number;
     y: number;
   };
-  maps: { 11: boolean; 12: boolean; 21: boolean; 22: boolean };
+  maps: { [key: number]: boolean };
   name: string;
   plaintext: string;
   stats: { FlatPhysicalDamageMod: number; FlatArmorMod: number };
@@ -199,8 +199,8 @@ interface PlayerItem {
 }
 
 interface Ddragon {
-  items: any;
-  runes: any;
+  items: ItemsDdragon;
+  runes: RunesDdragon[];
 }
 
 interface PlayerRunes {
@@ -217,6 +217,30 @@ interface PlayerRunes {
     name: string;
     id: number;
     key: string;
-    slots: any[];
+    slots: RunesSlots[];
   };
+}
+
+interface ItemsDdragon {
+  [key: number]: PlayerItem;
+}
+
+interface Runes {
+  icon: string;
+  id: number;
+  key: string;
+  name: string;
+}
+
+interface RunesDdragon extends Runes {
+  slots: RunesSlots[];
+}
+
+interface RunesSlots {
+  runes: RunesDesc[];
+}
+
+interface RunesDesc extends Runes {
+  longDesc: string;
+  shortDesc: string;
 }
