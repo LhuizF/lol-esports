@@ -10,9 +10,10 @@ export const Container = styled(ItemContainer)`
     position: absolute;
     bottom: 0;
     right: 0;
+    height: 15px;
 
     img {
-      width: 16px;
+      width: 14px;
     }
   }
 `;

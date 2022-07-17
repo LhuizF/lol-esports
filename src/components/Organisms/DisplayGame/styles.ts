@@ -4,8 +4,12 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.greySecondary};
   margin-top: 2rem;
   width: 80%;
-  padding: 2rem;
+  padding: 0.5rem 1rem 1rem;
   box-sizing: border-box;
+
+  @media (max-width: 1420px) {
+    width: 90%;
+  }
 `;
 
 export const Header = styled.div`

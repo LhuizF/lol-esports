@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Item, Content, ButtonContainer, GoldContainer } from './styles';
 import { IoIosArrowDown } from 'react-icons/io';
 
@@ -21,7 +21,7 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
         <Runes player={player} runes={ddragon.runes} />
       </Content>
 
-      <Content flex={1} minWidth={320}>
+      <Content flex={1} minWidth={255}>
         <Health player={player} isReverse={isReverse} />
         <Items player={player} ddragon={ddragon} isReverse={isReverse} />
       </Content>

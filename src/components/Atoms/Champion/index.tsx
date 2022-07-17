@@ -14,8 +14,8 @@ const ChampionContainer: React.FC<Props> = ({ player }) => {
       <Image
         title={`${player.summonerName} - ${player.championId}`}
         src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${player.championId}.png`}
-        width={50}
-        height={50}
+        width={45}
+        height={45}
       />
       <p>{player.level}</p>
     </Container>

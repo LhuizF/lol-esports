@@ -11,8 +11,7 @@ export const Container = styled.div<Props>`
   flex-direction: ${({ isReverse }) => (isReverse ? 'row-reverse' : 'row')};
   justify-content: flex-end;
   position: relative;
-  padding: 4px;
-  height: 40px;
+  padding: 2px;
 `;
 
 export const Item = styled(ItemContainer)``;
@@ -20,7 +19,6 @@ export const Item = styled(ItemContainer)``;
 export const Trinket = styled.div<Props>`
   position: absolute;
   margin: 0 2px;
-  height: 40px;
 
   ${({ isReverse }) => (isReverse ? 'right: 0.2rem' : 'left: 0.2rem')};
   z-index: 1;

@@ -44,8 +44,8 @@ const Runes: React.FC<Props> = ({ player, runes }) => {
     <Container title={playerRunes.runes.name}>
       <Image
         src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.runes.icon}`}
-        width={40}
-        height={40}
+        width={35}
+        height={35}
       />
       <div title={playerRunes.subRunes.name}>
         <img
