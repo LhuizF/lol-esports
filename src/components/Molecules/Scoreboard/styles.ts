@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   background-color: ${({ theme }) => theme.colors.greySecondary};
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    margin-top: 0.5rem;
+  }
 `;
 
 export const Content = styled.div`
@@ -22,10 +26,22 @@ interface Props {
 
 export const DragonsContainer = styled.div<Props>`
   display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
   align-items: center;
-  justify-content: ${({ isRevised }) => (isRevised ? 'flex-end' : 'flex-start')};
+  flex-direction: column;
+  width: 150px;
+
+  div {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  p {
+    text-align: center;
+    // margin: 0 2rem;
+  }
 `;
 
 export const Detail = styled.div`
@@ -38,13 +54,4 @@ export const Text = styled.div`
   display: flex;
   align-items: flex-start;
   color: ${({ theme }) => theme.colors.white};
-
-  div {
-    display: flex;
-    align-items: center;
-
-    p {
-      margin: 0 2rem;
-    }
-  }
 `;

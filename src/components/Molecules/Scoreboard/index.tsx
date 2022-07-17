@@ -46,19 +46,26 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
             value={blueGold.toLocaleString('pt-BR')}
           />
         </Detail>
-        <DragonsContainer>
-          {blueTeam.dragons.map((dragon, index) => (
-            <DragonIcon dragon={dragon} key={index} />
-          ))}
-        </DragonsContainer>
       </Content>
 
       <Text>
-        <div>
+        <DragonsContainer>
           <p>{blueTeam.totalKills}</p>
-          <DetailsIcon name="kills" size={50} />
+          <div>
+            {blueTeam.dragons.map((dragon, index) => (
+              <DragonIcon dragon={dragon} key={index} />
+            ))}
+          </div>
+        </DragonsContainer>
+        <DetailsIcon name="kills" size={50} />
+        <DragonsContainer isRevised>
           <p>{redTeam.totalKills}</p>
-        </div>
+          <div>
+            {redTeam.dragons.map((dragon, index) => (
+              <DragonIcon dragon={dragon} key={index} />
+            ))}
+          </div>
+        </DragonsContainer>
       </Text>
 
       <Content>
@@ -68,11 +75,6 @@ const Scoreboard: React.FC<Props> = ({ frame }) => {
           <DetailsIcon name="baron" color="red" value={redTeam.barons} />
           <DetailsIcon name="inhibitor" color="red" value={redTeam.inhibitors} />
         </Detail>
-        <DragonsContainer isRevised>
-          {redTeam.dragons.map((dragon, index) => (
-            <DragonIcon dragon={dragon} key={index} />
-          ))}
-        </DragonsContainer>
       </Content>
     </Container>
   );

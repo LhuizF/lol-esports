@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex: 1;
 
   p {
-    margin: 0.5rem 0;
+    margin: 0;
     font-size: 1rem;
     color: ${({ theme }) => theme.colors.white};
   }
