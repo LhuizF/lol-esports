@@ -6,40 +6,34 @@ import { Container, Item, Trinket } from './styles';
 interface Props {
   player: Player;
   isReverse?: boolean;
-  ddragon: Ddragon;
+  items: ItemsDdragon;
 }
 
-const Items: React.FC<Props> = ({ player, isReverse, ddragon }) => {
+const Items: React.FC<Props> = ({ player, isReverse, items }) => {
   const [itemsPlayer, setItemsPlayer] = useState<PlayerItem[]>([]);
 
   const version = localStorage.getItem('version');
 
   useEffect(() => {
-    const { items } = ddragon;
-
     const itensWithId = player.items
       .map((i) => {
         return { ...items[i], id: i };
       })
       .sort((a, b) => a.gold.total - b.gold.total);
 
-    const newItems = new Set();
-    const filterItems = itensWithId.filter((item) => {
-      const duplicatedPerson = newItems.has(item.id);
-      newItems.add(item.id);
-      return !duplicatedPerson;
-    });
+    const itemsStacks = new Map();
 
-    const itemsPlayer = filterItems.map((item) => {
+    const itemsPlayer = itensWithId.filter((item) => {
       if (item.stacks >= 2) {
         const stacksCurrent = player.items.filter((i) => i === item.id).length;
-        return { ...item, stacksCurrent: stacksCurrent };
+        itemsStacks.set(item.id, { ...item, stacksCurrent: stacksCurrent });
+        return;
       }
       return item;
     });
 
-    setItemsPlayer(itemsPlayer);
-  }, [player, ddragon]);
+    setItemsPlayer([...itemsStacks.values(), ...itemsPlayer]);
+  }, [player, items]);
 
   return (
     <Container isReverse={isReverse}>
@@ -48,17 +42,17 @@ const Items: React.FC<Props> = ({ player, isReverse, ddragon }) => {
           <Item key={index} title={item.name}>
             <Image
               src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
-              width={40}
-              height={40}
+              width={35}
+              height={35}
             />
-            <p>{item.stacks > 0 && item.stacksCurrent}</p>
+            <p>{item.stacksCurrent > 1 && item.stacksCurrent}</p>
           </Item>
         ) : (
           <Trinket isReverse={isReverse} key={index} title={item.name}>
             <Image
               src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
-              width={40}
-              height={40}
+              width={35}
+              height={35}
             />
           </Trinket>
         )

@@ -23,7 +23,7 @@ const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
 
       <Content flex={1} minWidth={255}>
         <Health player={player} isReverse={isReverse} />
-        <Items player={player} ddragon={ddragon} isReverse={isReverse} />
+        <Items player={player} items={ddragon.items} isReverse={isReverse} />
       </Content>
 
       <Content>

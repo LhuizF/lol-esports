@@ -53,7 +53,7 @@ interface Team {
   code: string;
   image: string;
   result: {
-    outcome: any; // null
+    outcome?: any; // null
     gameWins: number;
   };
   record: {
