@@ -21,7 +21,7 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
       })
       .sort((a, b) => a.gold.total - b.gold.total);
 
-    const itemsStacks = new Map();
+    const itemsStacks = new Map<number, PlayerItem>();
 
     const itemsPlayer = itensWithId.filter((item) => {
       if (item.stacks >= 2) {
