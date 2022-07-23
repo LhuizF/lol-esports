@@ -56,4 +56,3 @@ const Runes: React.FC<Props> = ({ player, runes }) => {
 };
 
 export default Runes;
-//690

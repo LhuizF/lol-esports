@@ -28,7 +28,7 @@ export const Item = styled(ItemContainer)`
   }
 `;
 
-export const Trinket = styled(Item) <Props>`
+export const Trinket = styled(Item)<Props>`
   position: absolute;
 
   ${({ isReverse }) => (isReverse ? 'right: 0.2rem' : 'left: 0.2rem')};
