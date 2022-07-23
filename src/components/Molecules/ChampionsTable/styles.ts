@@ -7,6 +7,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 interface Props {
@@ -16,4 +20,14 @@ interface Props {
 export const Team = styled.div<Props>`
   display: grid;
   grid-row-gap: 10px;
+`;
+
+export const TeamName = styled.div`
+  display: none;
+  margin-top: 10px;
+  color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+  }
 `;

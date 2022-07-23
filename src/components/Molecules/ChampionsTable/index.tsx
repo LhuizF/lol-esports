@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Team } from './styles';
+import { Container, Team, TeamName } from './styles';
 import ChampionsContainer from '../PlayersContainer';
 
 interface Props {
   frame: Frame;
   details: DetailsParticipant[];
-  gameMetadata: GameMetadata;
+  gameMetadata: TeamsGameMetadata;
   ddragon: Ddragon;
 }
 
@@ -47,11 +47,13 @@ const ChampionsTable: React.FC<Props> = ({ frame, gameMetadata, details, ddragon
   return (
     <Container>
       <Team>
+        <TeamName>{gameMetadata.blueTeamName}</TeamName>
         {playersBlue.map((player, index) => (
           <ChampionsContainer key={index} player={player} ddragon={ddragon} />
         ))}
       </Team>
       <Team isReverse>
+        <TeamName>{gameMetadata.redTeamName}</TeamName>
         {playersRed.map((player, index) => (
           <ChampionsContainer key={index} player={player} ddragon={ddragon} isReverse />
         ))}

@@ -89,7 +89,11 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber, ddragon }) => {
           <ChampionsTable
             frame={lastFrame}
             details={detailsGame.participants}
-            gameMetadata={windowGame.gameMetadata}
+            gameMetadata={{
+              ...windowGame.gameMetadata,
+              blueTeamName: blueSize.name,
+              redTeamName: redSize.name
+            }}
             ddragon={ddragon}
           />
         </>
