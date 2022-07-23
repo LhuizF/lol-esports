@@ -13,6 +13,11 @@ export const Container = styled.div<Props>`
   box-sizing: border-box;
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
+  font-size: 14px;
+
+  @media (max-width: 970px) {
+    font-size: 10px;
+  }
 `;
 
 export const Item = styled.div<Props>`
@@ -27,8 +32,6 @@ export const Item = styled.div<Props>`
 
   div {
     display: flex;
-    /* border-left: 2px solid ${({ theme }) => theme.colors.white};
-    border-right: 2px solid ${({ theme }) => theme.colors.white}; */
     width: 50px;
     box-sizing: border-box;
     align-items: center;
@@ -44,6 +47,13 @@ export const Item = styled.div<Props>`
     text-align: center;
     flex: 1;
   }
+
+  @media (max-width: 970px) {
+    margin: 0 3px;
+    div {
+      width: 30px;
+    }
+  }
 `;
 
 interface ContentProps {
@@ -55,6 +65,10 @@ export const Content = styled.div<ContentProps>`
   ${({ flex }) => flex && `flex: ${flex};`}
   ${({ minWidth }) => minWidth && `min-width: ${minWidth}px;`}
   height: 100%;
+
+  @media (max-width: 970px) {
+    ${({ minWidth }) => minWidth && `min-width: 175px;`}
+  }
 `;
 
 export const ButtonContainer = styled.div`

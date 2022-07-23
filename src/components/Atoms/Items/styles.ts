@@ -14,11 +14,18 @@ export const Container = styled.div<Props>`
   padding: 2px;
 `;
 
-export const Item = styled(ItemContainer)``;
+export const Item = styled(ItemContainer)`
+  width: 35px;
+  height: 35px;
 
-export const Trinket = styled.div<Props>`
+  @media (max-width: 970px) {
+    width: 25px;
+    height: 25px;
+  }
+`;
+
+export const Trinket = styled(Item)<Props>`
   position: absolute;
-  margin: 0 2px;
 
   ${({ isReverse }) => (isReverse ? 'right: 0.2rem' : 'left: 0.2rem')};
   z-index: 1;

@@ -19,10 +19,10 @@ const Health: React.FC<Props> = ({ player, isReverse }) => {
   return (
     <Container isReverse={isReverse} currentHealth={health}>
       {player.summonerName} - {player.championId}
-      <p title={`${health.toFixed(0)}%`}>
-        {player.currentHealth}/{player.maxHealth}
-      </p>
       <div>
+        <p title={`${health.toFixed(0)}%`}>
+          {player.currentHealth}/{player.maxHealth}
+        </p>
         <span />
       </div>
     </Container>

@@ -6,6 +6,7 @@ export const Container = styled.div`
   width: 80%;
   padding: 0.5rem 1rem 1rem;
   box-sizing: border-box;
+  max-width: 1000px;
 
   @media (max-width: 1420px) {
     width: 90%;
@@ -35,7 +36,7 @@ export const Text = styled.div`
   flex-direction: column;
   align-items: center;
   color: ${({ theme }) => theme.colors.white};
-
+  margin-top: 0.5rem;
   h2 {
     font-size: 2rem;
     font-weight: bold;

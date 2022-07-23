@@ -10,4 +10,9 @@ export const ItemContainer = styled.div`
     right: 0;
     line-height: 16px;
   }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;

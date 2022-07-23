@@ -28,9 +28,14 @@ export const Container = styled.div<Props>`
 
   p {
     position: absolute;
-    width: calc(100% - 8px);
+    width: 100%;
     text-align: center;
-    top: 50%;
     height: 20px;
+  }
+
+  @media (max-width: 970px) {
+    span {
+      width: 10px;
+    }
   }
 `;
