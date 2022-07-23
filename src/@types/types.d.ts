@@ -83,6 +83,11 @@ interface GameMetadata {
   redTeamMetadata: TeamMetadata;
 }
 
+interface TeamsGameMetadata extends GameMetadata {
+  blueTeamName: string;
+  redTeamName: string;
+}
+
 interface TeamMetadata {
   esportsTeamId: string;
   participantMetadata: ParticipantMetadata[];
