@@ -42,6 +42,17 @@ export const DragonsContainer = styled.div<Props>`
     text-align: center;
     // margin: 0 2rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 60px;
+
+    div {
+      padding: 0;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
 `;
 
 export const Detail = styled.div`

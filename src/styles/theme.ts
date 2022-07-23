@@ -10,5 +10,10 @@ export const theme = {
     life: '#05A100',
     positive: '#00B200',
     negative: '#FF0000'
+  },
+
+  breakpoints: {
+    md: '970px',
+    mobile: '690px'
   }
 };

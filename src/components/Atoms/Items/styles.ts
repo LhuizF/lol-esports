@@ -12,21 +12,30 @@ export const Container = styled.div<Props>`
   justify-content: flex-end;
   position: relative;
   padding: 2px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: row-reverse;
+  }
 `;
 
 export const Item = styled(ItemContainer)`
   width: 35px;
   height: 35px;
 
-  @media (max-width: 970px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 25px;
     height: 25px;
   }
 `;
 
-export const Trinket = styled(Item)<Props>`
+export const Trinket = styled(Item) <Props>`
   position: absolute;
 
   ${({ isReverse }) => (isReverse ? 'right: 0.2rem' : 'left: 0.2rem')};
   z-index: 1;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    left: auto;
+    right: 0.2rem;
+  }
 `;

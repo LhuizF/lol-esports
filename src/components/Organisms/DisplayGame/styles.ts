@@ -16,6 +16,10 @@ export const Container = styled.div`
     width: 95%;
     margin-top: 1rem;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 8px;
+  }
 `;
 
 export const Header = styled.div`
@@ -37,8 +41,18 @@ export const Text = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colors.white};
   margin-top: 0.5rem;
+
   h2 {
     font-size: 2rem;
     font-weight: bold;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    h2 {
+      font-size: 1rem;
+    }
+    span {
+      font-size: 0.8rem;
+    }
   }
 `;

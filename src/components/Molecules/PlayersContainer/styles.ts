@@ -15,8 +15,8 @@ export const Container = styled.div<Props>`
   background-color: ${({ theme }) => theme.colors.grey};
   font-size: 14px;
 
-  @media (max-width: 970px) {
-    font-size: 10px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: row;
   }
 `;
 
@@ -48,11 +48,8 @@ export const Item = styled.div<Props>`
     flex: 1;
   }
 
-  @media (max-width: 970px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     margin: 0 3px;
-    div {
-      width: 30px;
-    }
   }
 `;
 
@@ -66,7 +63,7 @@ export const Content = styled.div<ContentProps>`
   ${({ minWidth }) => minWidth && `min-width: ${minWidth}px;`}
   height: 100%;
 
-  @media (max-width: 970px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     ${({ minWidth }) => minWidth && `min-width: 175px;`}
   }
 `;

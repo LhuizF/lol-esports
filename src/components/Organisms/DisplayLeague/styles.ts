@@ -8,6 +8,11 @@ export const Container = styled.div`
   padding: 22px;
   // height: 130px;
   margin-bottom: 20px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const League = styled.div`
@@ -16,6 +21,10 @@ export const League = styled.div`
   justify-content: center;
   width: 160px;
   margin-right: 22px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin: 0;
+  }
 `;
 
 export const Game = styled.div`
@@ -29,5 +38,9 @@ export const Game = styled.div`
 
   h3 {
     margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    border: none;
   }
 `;

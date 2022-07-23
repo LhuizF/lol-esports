@@ -5,7 +5,7 @@ interface Props {
   isDead: boolean;
 }
 
-export const Container = styled(ItemContainer) <Props>`
+export const Container = styled(ItemContainer)<Props>`
   margin: 0;
   height: 42px;
   border: ${({ theme }) => theme.colors.black} 2px solid;
@@ -19,7 +19,7 @@ export const Container = styled(ItemContainer) <Props>`
     text-align: center;
   }
 
-  @media (max-width: 970px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 30px;
     height: 30px;
 

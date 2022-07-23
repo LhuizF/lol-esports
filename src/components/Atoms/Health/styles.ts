@@ -33,7 +33,11 @@ export const Container = styled.div<Props>`
     height: 20px;
   }
 
-  @media (max-width: 970px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    align-items: flex-start;
+    div {
+      justify-content: flex-start;
+    }
     span {
       width: 10px;
     }

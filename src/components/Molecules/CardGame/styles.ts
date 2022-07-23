@@ -24,4 +24,8 @@ export const VersusLogo = styled.div`
 
 export const Team = styled.div`
   width: 120px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 80%;
+  }
 `;
