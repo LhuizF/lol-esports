@@ -6,5 +6,8 @@ module.exports = {
       'lolstatic-a.akamaihd.net',
       'ddragon.leagueoflegends.com'
     ]
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 };
