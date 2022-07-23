@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { Container } from './styles';
+import { Container, Content } from './styles';
 
 interface Props {
   player: Player;
@@ -42,18 +41,19 @@ const Runes: React.FC<Props> = ({ player, runes }) => {
 
   return (
     <Container title={playerRunes.runes.name}>
-      <Image
-        src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.runes.icon}`}
-        width={35}
-        height={35}
-      />
-      <div title={playerRunes.subRunes.name}>
+      <Content>
         <img
-          src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.subRunes.icon}`}
+          src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.runes.icon}`}
         />
-      </div>
+        <div title={playerRunes.subRunes.name}>
+          <img
+            src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.subRunes.icon}`}
+          />
+        </div>
+      </Content>
     </Container>
   );
 };
 
 export default Runes;
+//690

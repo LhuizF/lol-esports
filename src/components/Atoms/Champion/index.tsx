@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { Container } from './styles';
 
 interface Props {
@@ -11,11 +10,9 @@ const ChampionContainer: React.FC<Props> = ({ player }) => {
 
   return (
     <Container isDead={player.currentHealth === 0}>
-      <Image
+      <img
         title={`${player.summonerName} - ${player.championId}`}
         src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${player.championId}.png`}
-        width={45}
-        height={45}
       />
       <p>{player.level}</p>
     </Container>

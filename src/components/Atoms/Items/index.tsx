@@ -40,19 +40,15 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
       {itemsPlayer.map((item, index) =>
         !item.tags.includes('Trinket') ? (
           <Item key={index} title={item.name}>
-            <Image
+            <img
               src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
-              width={35}
-              height={35}
             />
             <p>{item.stacksCurrent > 1 && item.stacksCurrent}</p>
           </Item>
         ) : (
           <Trinket isReverse={isReverse} key={index} title={item.name}>
-            <Image
+            <img
               src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
-              width={35}
-              height={35}
             />
           </Trinket>
         )
