@@ -23,12 +23,12 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
+        styles: [
           <>
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        )
+        ]
       };
     } finally {
       sheet.seal();
@@ -48,6 +48,11 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
             rel="stylesheet"
+          />
+
+          <link
+            rel="icon"
+            href="http://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/5376.png"
           />
         </Head>
         <body>
