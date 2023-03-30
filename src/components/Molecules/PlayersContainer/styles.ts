@@ -14,6 +14,8 @@ export const Container = styled.div<Props>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.grey};
   font-size: 14px;
+  border-radius: 10px;
+  padding: 0.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: row;

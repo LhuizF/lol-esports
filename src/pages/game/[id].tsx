@@ -9,7 +9,7 @@ import Loading from '../../components/Atoms/Loading';
 
 const Game: NextPage = () => {
   const [events, setEvents] = useState<EventGame>();
-  const [gameNumber, setGameNumber] = useState<number>(0);
+  const [gameNumber, setGameNumber] = useState<number>(4);
   const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState<string>('');
   const [ddragon, setDdragon] = useState<Ddragon>();
