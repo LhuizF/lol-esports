@@ -23,9 +23,7 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
       <Game>
         <h3>{getGameState(events.state)}</h3>
         <Link href={`game/${events.match.id}`}>
-          <a href={`game/${events.match.id}`}>
-            <CardGame teams={events.match.teams} />
-          </a>
+          <CardGame teams={events.match.teams} />
         </Link>
       </Game>
     </Container>

@@ -12,9 +12,7 @@ const ChampionsTable: React.FC<Props> = ({ league }) => {
   return (
     <Container>
       <Link href="/">
-        <a href="/">
-          <IoIosArrowBack size={40} />
-        </a>
+        <IoIosArrowBack size={40} />
       </Link>
       {league && <Logo image={league.image} name={league.name} size={50} />}
     </Container>
