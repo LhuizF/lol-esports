@@ -1,3 +1,13 @@
+interface LiveType {
+  data: {
+    schedule: Schedule;
+  };
+}
+
+interface EventType {
+  data: { event: EventGame };
+}
+
 interface Schedule {
   events: EventGame[];
 }

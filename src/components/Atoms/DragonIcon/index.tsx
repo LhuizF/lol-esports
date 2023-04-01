@@ -22,17 +22,18 @@ const DragonIcon: React.FC<Props> = ({ dragon }) => {
   }, [width]);
 
   return (
-    <Container title={icons[dragon].name}>
-      <svg
-        className="icon"
-        width={mobile ? 15 : 30}
-        height={mobile ? 15 : 30}
-        viewBox="0 0 24 24"
-        xmlns="https://www.w3.org/2000/svg"
-      >
-        <path className="shape" fill={icons[dragon].color} d={icons[dragon].path}></path>
-      </svg>
-    </Container>
+    // <Container title={icons[dragon].name}>
+    //   <svg
+    //     className="icon"
+    //     width={mobile ? 15 : 30}
+    //     height={mobile ? 15 : 30}
+    //     viewBox="0 0 24 24"
+    //     xmlns="https://www.w3.org/2000/svg"
+    //   >
+    //     <path className="shape" fill={icons[dragon].color} d={icons[dragon].path}></path>
+    //   </svg>
+    // </Container>
+    <div>o</div>
   );
 };
 

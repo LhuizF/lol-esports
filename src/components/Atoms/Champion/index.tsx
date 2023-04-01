@@ -11,6 +11,7 @@ const ChampionContainer: React.FC<Props> = ({ player }) => {
   return (
     <Container isDead={player.currentHealth === 0}>
       <img
+        alt={player.championId}
         title={`${player.summonerName} - ${player.championId}`}
         src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${player.championId}.png`}
       />
