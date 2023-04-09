@@ -12,7 +12,7 @@ interface Props {
 const Logo: React.FC<Props> = ({ image, name, size, height }) => {
   return (
     <Container height={height}>
-      <Image src={image} width={size} height={size} />
+      <Image src={image} width={size} height={size} alt={name} />
       {name && <p>{name}</p>}
     </Container>
   );

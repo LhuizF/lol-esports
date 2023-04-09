@@ -43,10 +43,12 @@ const Runes: React.FC<Props> = ({ player, runes }) => {
     <Container title={playerRunes.runes.name}>
       <Content>
         <img
+          alt={playerRunes.runes.icon}
           src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.runes.icon}`}
         />
         <div title={playerRunes.subRunes.name}>
           <img
+            alt={playerRunes.subRunes.icon}
             src={`https://ddragon.leagueoflegends.com/cdn/img/${playerRunes.subRunes.icon}`}
           />
         </div>

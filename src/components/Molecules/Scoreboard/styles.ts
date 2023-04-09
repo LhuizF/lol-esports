@@ -32,10 +32,12 @@ export const DragonsContainer = styled.div<Props>`
 
   div {
     display: flex;
+    flex-direction: ${({ isRevised }) => (isRevised ? 'row' : 'row-reverse')};
     align-items: flex-start;
     width: 100%;
     padding: 0 10px;
     box-sizing: border-box;
+    gap: 4px;
   }
 
   p {
