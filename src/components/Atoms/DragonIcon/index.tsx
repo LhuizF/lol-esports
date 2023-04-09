@@ -60,7 +60,7 @@ const DragonIcon: React.FC<Props> = ({ dragon }) => {
 
   return (
     <Container title={dragonInfo.name}>
-      <img src={dragonInfo.icon.src} alt={dragonInfo.name} />
+      <img src={dragonInfo.icon} alt={dragonInfo.name} />
     </Container>
   );
 };

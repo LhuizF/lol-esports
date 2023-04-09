@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import React from 'react';
 import { Container, Content } from './styles';
+import { Helmet } from 'react-helmet';
 
 interface Props {
   children: React.ReactNode;
@@ -11,9 +11,9 @@ interface Props {
 const Main: React.FC<Props> = ({ children, title, isGame }) => {
   return (
     <>
-      <Head>
+      <Helmet>
         <title>{title ? `Esports Live - ${title}` : 'Esports Live'}</title>
-      </Head>
+      </Helmet>
       <Container>{isGame ? children : <Content>{children}</Content>}</Container>
     </>
   );

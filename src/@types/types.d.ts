@@ -20,7 +20,7 @@ interface EventGame {
   blockName?: string;
   league: League;
   tournament: { id: string };
-  match?: Match;
+  match: Match;
   streams: Stream[];
 }
 
