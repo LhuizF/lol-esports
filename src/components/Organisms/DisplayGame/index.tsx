@@ -1,10 +1,10 @@
 import React, { use, useEffect, useState } from 'react';
 import { Container, Header, Text } from './styles';
-import { getGameState } from '../../../utils';
+import { getDateFormatted, getGameState } from '../../../utils';
 import Logo from '../../Atoms/Logo';
 import Scoreboard from '../../Molecules/Scoreboard';
 import ChampionsTable from '../../Molecules/ChampionsTable';
-import { apiDdragon } from '../../../services/api';
+import { apiDdragon, apiGame } from '../../../services/api';
 import Loading from '../../Atoms/Loading';
 import { useFrameApi } from '../../../hooks/useLolEsportsApi';
 
@@ -16,6 +16,7 @@ interface Props {
 const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   const [noApi, setNoApi] = useState(false);
   const [ddragon, setDdragon] = useState<Ddragon>(null);
+  const [test, setTest] = useState(0);
 
   const [blueSize, redSize] = match.teams;
   const {
@@ -23,6 +24,13 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
     error: errorWindow,
     isLoading: isLoadingResponse
   } = useFrameApi<WindowGame>(`window/${match.games[gameNumber].id}`);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTest((prev) => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const {
     data: detailsResponse,
@@ -51,7 +59,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   }
 
   const frame = windowResponse.frames[windowResponse.frames?.length - 1];
-  const { participants } = detailsResponse.frames[detailsResponse.frames.length - 1];
+  const { participants } = detailsResponse.frames[detailsResponse.frames?.length - 1];
 
   return (
     <Container>

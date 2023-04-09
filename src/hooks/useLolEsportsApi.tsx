@@ -20,7 +20,7 @@ export function useFrameApi<T = any>(url: string) {
   const { data, error, isLoading, mutate } = useSWR(
     url,
     async (url) => await apiGame.get(url, { params }).then((res) => res.data as T),
-    { refreshInterval: 1000 }
+    { refreshInterval: 1000, revalidateOnFocus: true }
   );
 
   return { data, error, isLoading, mutate };

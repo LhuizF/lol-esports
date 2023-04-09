@@ -24,8 +24,7 @@ const Game: NextPage = () => {
     }
   }, [id]);
 
-  if (isLoading) return <Loading />;
-  if (error) return <div>error</div>;
+  if (isLoading || error) return <Loading />;
 
   const { event } = data.data;
   const title = event.match.teams.map((team) => team.code).join(' vs ');

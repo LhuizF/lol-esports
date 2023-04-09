@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 interface Props {
   total: number;
@@ -16,17 +16,35 @@ interface ButtonProps {
   inLive: boolean;
 }
 
+const blink = keyframes`
+  0% {
+    box-shadow: 0 0 10px 4px #e8303093;
+  }
+  50% {
+    box-shadow: 0 0 4px 4px #e8303093;
+  }
+  100% {
+    box-shadow: 0 0 10px 4px #e8303093;
+  }
+`;
+
 export const Button = styled.button<ButtonProps>`
-  background-color: #ccc;
+  background-color: transparent;
+  color: ${({ inLive }) => (inLive ? '#e83030' : '#fff')};
   border: 1px solid ${({ inLive }) => (inLive ? '#e83030' : '#ccc')};
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  ${({ active }) => active && `background: red;`}
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 150px;
+  ${({ active }) => active && `background-color: #383C40;`}
 
-  ${({ inLive }) => inLive && `box-shadow: 0 0 10px 4px #e8303093;`}
+  animation: ${({ inLive }) =>
+    inLive
+      ? css`
+          ${blink} 2s linear infinite;
+        `
+      : ''};
 `;
