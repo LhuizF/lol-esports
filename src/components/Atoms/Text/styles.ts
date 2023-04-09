@@ -6,6 +6,7 @@ export const TextContainer = styled.div`
   color: #fff;
   width: 100%;
   margin-top: 40px;
+
   p {
     text-align: center;
   }

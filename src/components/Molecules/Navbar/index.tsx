@@ -3,7 +3,6 @@ import Logo from '../../Atoms/Logo';
 import { Container } from './styles';
 import { IoIosArrowBack } from 'react-icons/io';
 
-
 interface Props {
   league: League;
 }
