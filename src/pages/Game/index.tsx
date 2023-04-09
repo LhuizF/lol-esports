@@ -21,7 +21,8 @@ const Game: React.FC = () => {
       const game = games.findIndex((game) => game.state === 'inProgress');
       if (game !== -1) setGameNumber(game);
     }
-  }, [id]);
+  }, [id, data]);
+
   if (isLoading || error) return <Loading />;
 
   const { event } = data.data;

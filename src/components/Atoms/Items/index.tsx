@@ -13,12 +13,19 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
 
   const version = localStorage.getItem('version');
 
+  const limitItens = (array: PlayerItem[]): void => {
+    if (array.length > 7) {
+      array.splice(1, 1);
+      return limitItens(array);
+    }
+  };
+
   useEffect(() => {
     const itensWithId = player.items
-      .map((i) => {
-        return { ...items[i], id: i };
-      })
+      .map((i) => ({ ...items[i], id: i }))
       .sort((a, b) => a.gold.total - b.gold.total);
+
+    limitItens(itensWithId);
 
     const itemsStacks = new Map<number, PlayerItem>();
 

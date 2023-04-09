@@ -15,7 +15,6 @@ interface Props {
 const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   const [noApi, setNoApi] = useState(false);
   const [ddragon, setDdragon] = useState<Ddragon>();
-  const [test, setTest] = useState(0);
 
   const [blueSize, redSize] = match.teams;
   const {
@@ -23,13 +22,6 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
     error: errorWindow,
     isLoading: isLoadingResponse
   } = useFrameApi<WindowGame>(`/window/${match.games[gameNumber].id}`);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setTest((prev) => prev + 1);
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, []);
 
   const {
     data: detailsResponse,
