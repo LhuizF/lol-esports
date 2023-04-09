@@ -6,6 +6,7 @@ import DisplayLeague from '../components/Organisms/DisplayLeague';
 import Loading from '../components/Atoms/Loading';
 import Title from '../components/Atoms/Title';
 import { useLolEsportsApi } from '../hooks/useLolEsportsApi';
+import Text from '../components/Atoms/Text';
 
 const Home: NextPage = () => {
   const { data, error, isLoading } = useLolEsportsApi<LiveType>('/getLive');
@@ -18,8 +19,11 @@ const Home: NextPage = () => {
   return (
     <Main title="Scoreboard">
       <Title text="Jogos ao vivos" />
-      {events.length > 0 &&
-        events.map((game, i) => <DisplayLeague key={i} events={game} />)}
+      {events.length > 0 ? (
+        events.map((game, i) => <DisplayLeague key={i} events={game} />)
+      ) : (
+        <Text text="Não há jogos ao vivo" />
+      )}
     </Main>
   );
 };
