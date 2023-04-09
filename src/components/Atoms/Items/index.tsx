@@ -23,7 +23,7 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
     const itemsStacks = new Map<number, PlayerItem>();
 
     const itemsPlayer = itensWithId.filter((item) => {
-      if (item.stacks >= 2) {
+      if (item.stacks && item.stacks >= 2) {
         const stacksCurrent = player.items.filter((i) => i === item.id).length;
         itemsStacks.set(item.id, { ...item, stacksCurrent: stacksCurrent });
         return;
@@ -42,7 +42,7 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
             <img
               src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
             />
-            <p>{item.stacksCurrent > 1 && item.stacksCurrent}</p>
+            <p>{item.stacksCurrent && item.stacksCurrent > 1 && item.stacksCurrent}</p>
           </Item>
         ) : (
           <Trinket isReverse={isReverse} key={index} title={item.name}>
