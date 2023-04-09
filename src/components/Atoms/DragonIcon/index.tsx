@@ -2,37 +2,56 @@ import React, { useEffect, useState } from 'react';
 import { Container } from './styles';
 
 import useWindowSize from '../../../hooks/useWindowSize';
-import chemtech from '../../../assets/Chemtech_Dragon.webp';
-import cloud from '../../../assets/Cloud_Dragon.webp';
-import hextech from '../../../assets/Hextech_Dragon.webp';
-import infernal from '../../../assets/Infernal_Dragon.webp';
-import mountain from '../../../assets/Mountain_Dragon.webp';
-import ocean from '../../../assets/Ocean_Dragon.webp';
+import chemtech from '../../../assets/images/Chemtech_Dragon.webp';
+import cloud from '../../../assets/images/Cloud_Dragon.webp';
+import hextech from '../../../assets/images/Hextech_Dragon.webp';
+import infernal from '../../../assets/images/Infernal_Dragon.webp';
+import mountain from '../../../assets/images/Mountain_Dragon.webp';
+import ocean from '../../../assets/images/Ocean_Dragon.webp';
+
+import chemtchSVG from '../../../assets/svg/chemtech-dragon.svg';
+import cloudSVG from '../../../assets/svg/cloud-dragon.svg';
+import elderSVG from '../../../assets/svg/elder-dragon.svg';
+import hextechSVG from '../../../assets/svg/hextech-dragon.svg';
+import infernalSVG from '../../../assets/svg/infernal-dragon.svg';
+import mountainSVG from '../../../assets/svg/mountain-dragon.svg';
+import oceanSVG from '../../../assets/svg/ocean-dragon.svg';
 
 const dragonsIcons = {
   chemtech: {
     name: 'Quimtec',
-    icon: chemtech
+    icon: chemtech,
+    svg: chemtchSVG
   },
   cloud: {
     name: 'Nuvem',
-    icon: cloud
+    icon: cloud,
+    svg: cloudSVG
   },
   hextech: {
     name: 'Hextech',
-    icon: hextech
+    icon: hextech,
+    svg: hextechSVG
   },
   infernal: {
     name: 'Infernal',
-    icon: infernal
+    icon: infernal,
+    svg: infernalSVG
   },
   mountain: {
     name: 'Montanha',
-    icon: mountain
+    icon: mountain,
+    svg: mountainSVG
   },
   ocean: {
     name: 'Oceano',
-    icon: ocean
+    icon: ocean,
+    svg: oceanSVG
+  },
+  elder: {
+    name: 'Ancião',
+    icon: '',
+    svg: elderSVG
   }
 };
 
@@ -60,7 +79,7 @@ const DragonIcon: React.FC<Props> = ({ dragon }) => {
 
   return (
     <Container title={dragonInfo.name}>
-      <img src={dragonInfo.icon} alt={dragonInfo.name} />
+      <img src={dragonInfo.svg} alt={dragonInfo.name} />
     </Container>
   );
 };
