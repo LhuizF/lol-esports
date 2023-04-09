@@ -1,12 +1,11 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Header, Text } from './styles';
 import { getDateFormatted, getGameState } from '../../../utils';
 import Logo from '../../Atoms/Logo';
 import Scoreboard from '../../Molecules/Scoreboard';
 import ChampionsTable from '../../Molecules/ChampionsTable';
-import { apiDdragon, apiGame } from '../../../services/api';
 import Loading from '../../Atoms/Loading';
-import { useFrameApi } from '../../../hooks/useLolEsportsApi';
+import { apiDataDragon, useFrameApi } from '../../../hooks/useFetch';
 
 interface Props {
   match: Match;
@@ -15,33 +14,25 @@ interface Props {
 
 const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   const [noApi, setNoApi] = useState(false);
-  const [ddragon, setDdragon] = useState<Ddragon>(null);
-  const [test, setTest] = useState(0);
+  const [ddragon, setDdragon] = useState<Ddragon>();
 
   const [blueSize, redSize] = match.teams;
   const {
     data: windowResponse,
     error: errorWindow,
     isLoading: isLoadingResponse
-  } = useFrameApi<WindowGame>(`window/${match.games[gameNumber].id}`);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTest((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  } = useFrameApi<WindowGame>(`/window/${match.games[gameNumber].id}`);
 
   const {
     data: detailsResponse,
     error: errorDetails,
     isLoading: isLoadingDetails
-  } = useFrameApi<DetailsGame>(`details/${match.games[gameNumber].id}`);
+  } = useFrameApi<DetailsGame>(`/details/${match.games[gameNumber].id}`);
 
   useEffect(() => {
     (async () => {
-      const items = await apiDdragon('item');
-      const runes = await apiDdragon('runesReforged');
+      const items = await apiDataDragon('item');
+      const runes = await apiDataDragon('runesReforged');
       setDdragon({ items: items.data, runes });
     })();
   }, []);

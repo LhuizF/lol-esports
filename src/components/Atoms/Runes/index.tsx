@@ -29,9 +29,12 @@ const Runes: React.FC<Props> = ({ player, runes }) => {
 
   useEffect(() => {
     const rune = runes.find((rune) => rune.id === player.perkMetadata.styleId);
+    if (!rune) return;
     const subRune = runes.find((rune) => rune.id === player.perkMetadata.subStyleId);
     const { perks } = player.perkMetadata;
     const mainRune = rune.slots[0].runes.find((rune) => rune.id === perks[0]);
+
+    if (!mainRune || !subRune) return;
 
     setPlayerRunes({
       runes: mainRune,

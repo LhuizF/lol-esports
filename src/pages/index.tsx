@@ -1,14 +1,12 @@
 import React from 'react';
-import { NextPage } from 'next';
-import { getVersion } from '../services/api';
-import Main from '../components/Templates/Main';
-import DisplayLeague from '../components/Organisms/DisplayLeague';
-import Loading from '../components/Atoms/Loading';
-import Title from '../components/Atoms/Title';
-import { useLolEsportsApi } from '../hooks/useLolEsportsApi';
-import Text from '../components/Atoms/Text';
+import Main from '@/components/Templates/Main';
+import DisplayLeague from '@/components/Organisms/DisplayLeague';
+import Loading from '@/components/Atoms/Loading';
+import Title from '@/components/Atoms/Title';
+import Text from '@/components/Atoms/Text';
+import { useLolEsportsApi, getVersion } from '@/hooks/useFetch';
 
-const Home: NextPage = () => {
+const Home: React.FC = () => {
   const { data, error, isLoading } = useLolEsportsApi<LiveType>('/getLive');
 
   if (error) return <div>error</div>;

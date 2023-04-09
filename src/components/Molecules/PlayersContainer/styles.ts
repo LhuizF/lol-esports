@@ -16,6 +16,7 @@ export const Container = styled.div<Props>`
   font-size: 14px;
   border-radius: 10px;
   padding: 0.5rem;
+  //background-color: red;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: row;
@@ -62,11 +63,11 @@ interface ContentProps {
 
 export const Content = styled.div<ContentProps>`
   ${({ flex }) => flex && `flex: ${flex};`}
-  ${({ minWidth }) => minWidth && `min-width: ${minWidth}px;`}
+  //${({ minWidth }) => minWidth && `min-width: ${minWidth}px;`}
   height: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    ${({ minWidth }) => minWidth && `min-width: 175px;`}
+    //${({ minWidth }) => minWidth && `min-width: 175px;`}
   }
 `;
 

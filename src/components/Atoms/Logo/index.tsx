@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { Container } from './styles';
 
@@ -12,7 +11,7 @@ interface Props {
 const Logo: React.FC<Props> = ({ image, name, size, height }) => {
   return (
     <Container height={height}>
-      <Image src={image} width={size} height={size} alt={name} />
+      <img src={image} width={size} height={size} alt={name} />
       {name && <p>{name}</p>}
     </Container>
   );

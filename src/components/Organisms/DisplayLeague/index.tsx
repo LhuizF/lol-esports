@@ -3,13 +3,15 @@ import CardGame from '../../Molecules/CardGame';
 import { Container, League, Game } from './styles';
 import Logo from '../../Atoms/Logo';
 import { getGameState } from '../../../utils';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 
 interface Props {
   events: EventGame;
 }
 
 const DisplayLeague: React.FC<Props> = ({ events }) => {
+  if (!events.match) return <></>;
+
   return (
     <Container>
       <League>
@@ -22,7 +24,7 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
       </League>
       <Game>
         <h3>{getGameState(events.state)}</h3>
-        <Link href={`game/${events.match.id}`}>
+        <Link to={`/game/${events.match.id}`}>
           <CardGame teams={events.match.teams} />
         </Link>
       </Game>

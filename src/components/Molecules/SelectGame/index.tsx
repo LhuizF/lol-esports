@@ -23,8 +23,7 @@ const SelectGame: React.FC<Props> = ({ games, gameNumber, setGameNumber }) => {
             onClick={() => handleClick(game, i)}
             active={gameNumber === i}
             disabled={game.state === 'unstarted'}
-            inLive={game.state === 'inProgress'}
-          >
+            inLive={game.state === 'inProgress'}>
             Game {i + 1}
             <span>{getGameState(game.state)}</span>
           </Button>

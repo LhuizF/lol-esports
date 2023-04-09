@@ -13,17 +13,24 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
 
   const version = localStorage.getItem('version');
 
+  const limitItens = (array: PlayerItem[]): void => {
+    if (array.length > 7) {
+      array.splice(1, 1);
+      return limitItens(array);
+    }
+  };
+
   useEffect(() => {
     const itensWithId = player.items
-      .map((i) => {
-        return { ...items[i], id: i };
-      })
+      .map((i) => ({ ...items[i], id: i }))
       .sort((a, b) => a.gold.total - b.gold.total);
+
+    limitItens(itensWithId);
 
     const itemsStacks = new Map<number, PlayerItem>();
 
     const itemsPlayer = itensWithId.filter((item) => {
-      if (item.stacks >= 2) {
+      if (item.stacks && item.stacks >= 2) {
         const stacksCurrent = player.items.filter((i) => i === item.id).length;
         itemsStacks.set(item.id, { ...item, stacksCurrent: stacksCurrent });
         return;
@@ -42,7 +49,7 @@ const Items: React.FC<Props> = ({ player, isReverse, items }) => {
             <img
               src={`http://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.id}.png`}
             />
-            <p>{item.stacksCurrent > 1 && item.stacksCurrent}</p>
+            <p>{item.stacksCurrent && item.stacksCurrent > 1 && item.stacksCurrent}</p>
           </Item>
         ) : (
           <Trinket isReverse={isReverse} key={index} title={item.name}>
