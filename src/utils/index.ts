@@ -55,6 +55,7 @@ interface EventParams {
 }
 
 export const event = ({ action, category, label, value }: EventParams) => {
+  // @ts-ignore
   window.gtag('event', action, {
     event_category: category,
     event_label: label,
