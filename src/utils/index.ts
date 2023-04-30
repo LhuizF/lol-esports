@@ -46,3 +46,19 @@ export function SetGold(
     );
   }
 }
+
+interface EventParams {
+  action: string;
+  category: string;
+  label: string;
+  value: number;
+}
+
+export const event = ({ action, category, label, value }: EventParams) => {
+  window.gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value: value,
+    debug_mode: true
+  });
+};
