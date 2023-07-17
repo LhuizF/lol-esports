@@ -12,6 +12,7 @@ export const Container = styled.div<Props>`
   justify-content: flex-end;
   position: relative;
   padding: 2px;
+  min-height: 35px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: row-reverse;

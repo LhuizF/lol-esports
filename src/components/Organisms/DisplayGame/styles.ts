@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.greySecondary};
-  margin-top: 2rem;
+  margin: 0;
   width: 80%;
   padding: 0.5rem 1rem 1rem;
   box-sizing: border-box;
@@ -33,6 +33,19 @@ export const Header = styled.div`
     font-size: 1rem;
     width: 160px;
     text-align: center;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    hr {
+      width: 90%;
+      height: 3px;
+      margin-top: 4px;
+      background-color: red;
+      border-radius: 5px;
+    }
   }
 `;
 

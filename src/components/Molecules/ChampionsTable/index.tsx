@@ -52,6 +52,7 @@ const ChampionsTable: React.FC<Props> = ({ frame, gameMetadata, details, ddragon
           <ChampionsContainer key={index} player={player} ddragon={ddragon} />
         ))}
       </Team>
+
       <Team isReverse>
         <TeamName>{gameMetadata.redTeamName}</TeamName>
         {playersRed.map((player, index) => (

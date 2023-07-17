@@ -42,6 +42,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
       match.games[gameNumber].state === 'inProgress'
         ? 'Jogo ainda não iniciado ou no draft'
         : 'Jogo ainda não iniciado';
+
     return <Text>{msg}</Text>;
   }
 
@@ -52,6 +53,8 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   const frame = windowResponse.frames[windowResponse.frames?.length - 1];
   const { participants } = detailsResponse.frames[detailsResponse.frames?.length - 1];
 
+  console.log(blueSize);
+
   return (
     <Container>
       {noApi ? (
@@ -60,11 +63,15 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
         <>
           <Header>
             <Logo image={blueSize.image} size={60} name={blueSize.name} />
-            <p>{blueSize.name}</p>
+            <div>
+              <p>{blueSize.name}</p>
+              {blueSize.result.gameWins > 0 && <hr />}
+            </div>
             <Text>
               <h2>VS</h2>
               <span>{getGameState(frame.gameState)}</span>
             </Text>
+            {redSize.result.gameWins > 0 && <hr />}
             <p>{redSize.name}</p>
             <Logo image={redSize.image} size={60} name={redSize.name} />
           </Header>
