@@ -42,5 +42,9 @@ export const Game = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     border: none;
+
+    h3 {
+      font-size: 0.8rem;
+    }
   }
 `;

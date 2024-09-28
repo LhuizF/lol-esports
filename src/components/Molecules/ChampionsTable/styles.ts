@@ -20,6 +20,7 @@ interface Props {
 export const Team = styled.div<Props>`
   display: grid;
   grid-row-gap: 10px;
+  width: 100%;
 `;
 
 export const TeamName = styled.div`

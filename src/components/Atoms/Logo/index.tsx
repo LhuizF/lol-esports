@@ -4,15 +4,13 @@ import { Container } from './styles';
 interface Props {
   image: string;
   name?: string;
-  size: number;
   height?: number;
 }
 
-const Logo: React.FC<Props> = ({ image, name, size, height }) => {
+const Logo: React.FC<Props> = ({ image, name, height }) => {
   return (
-    <Container height={height}>
-      <img src={image} width={size} height={size} alt={name} />
-      {name && <p>{name.length > 15 ? name.slice(0, 15) + "..." : name}</p>}
+    <Container title={name} height={height}>
+      <img src={image} alt={name} />
     </Container>
   );
 };

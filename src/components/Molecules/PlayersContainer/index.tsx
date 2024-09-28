@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Item, Content, ButtonContainer, GoldContainer } from './styles';
+import { Container, Item, Content, ButtonContainer, GoldContainer, MainInfosContainer } from './styles';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import Champion from '../../Atoms/Champion';
@@ -16,37 +16,39 @@ interface Props {
 const PlayersContainer: React.FC<Props> = ({ player, isReverse, ddragon }) => {
   return (
     <Container isReverse={isReverse}>
-      <Content>
-        <Champion player={player} />
-        <Runes player={player} runes={ddragon.runes} />
-      </Content>
+      <MainInfosContainer isReverse={isReverse}>
+        <Content>
+          <Champion player={player} />
+          <Runes player={player} runes={ddragon.runes} />
+        </Content>
 
-      <Content flex={1} minWidth={255}>
-        <Health player={player} isReverse={isReverse} />
-        <Items player={player} items={ddragon.items} isReverse={isReverse} />
-      </Content>
+        <Content flex={1} minWidth={255}>
+          <Health player={player} isReverse={isReverse} />
+          <Items player={player} items={ddragon.items} isReverse={isReverse} />
+        </Content>
 
-      <Content>
-        <Item isReverse={isReverse}>
-          <div title="KDA">
-            <p>K</p>
-            <p>D</p>
-            <p>A</p>
-          </div>
-          <div>
-            <span>{player.kills}</span>
-            <span>{player.deaths}</span>
-            <span>{player.assists}</span>
-          </div>
-        </Item>
-      </Content>
+        <Content>
+          <Item isReverse={isReverse}>
+            <div title="KDA">
+              <p>K</p>
+              <p>D</p>
+              <p>A</p>
+            </div>
+            <div>
+              <span>{player.kills}</span>
+              <span>{player.deaths}</span>
+              <span>{player.assists}</span>
+            </div>
+          </Item>
+        </Content>
 
-      <Content>
-        <Item>
-          <p>CS</p>
-          <span>{player.creepScore}</span>
-        </Item>
-      </Content>
+        <Content>
+          <Item>
+            <p>CS</p>
+            <span>{player.creepScore}</span>
+          </Item>
+        </Content>
+      </MainInfosContainer>
 
       <Content>
         <GoldContainer isPositive={player.goldGap > 0}>

@@ -47,4 +47,12 @@ export const Button = styled.button<ButtonProps>`
           ${blink} 2s linear infinite;
         `
       : ''};
+
+@media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  padding: 4px;
+
+  span {
+    font-size: 0.7rem;
+  }
+}
 `;

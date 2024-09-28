@@ -16,10 +16,8 @@ const DisplayLeague: React.FC<Props> = ({ events }) => {
     <Container>
       <League>
         <Logo
-          height={120}
           image={events.league.image}
           name={events.league.name}
-          size={80}
         />
       </League>
       <Game>

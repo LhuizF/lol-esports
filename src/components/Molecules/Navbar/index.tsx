@@ -7,15 +7,17 @@ interface Props {
   league: League;
 }
 
-const ChampionsTable: React.FC<Props> = ({ league }) => {
+const Navbar: React.FC<Props> = ({ league }) => {
   return (
     <Container>
       <a href="/">
         <IoIosArrowBack size={40} />
       </a>
-      {league && <Logo image={league.image} name={league.name} size={50} />}
+      <div>
+        {league && <Logo image={league.image} name={league.name} height={80} />}
+      </div>
     </Container>
   );
 };
 
-export default ChampionsTable;
+export default Navbar;

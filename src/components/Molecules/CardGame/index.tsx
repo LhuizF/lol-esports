@@ -12,7 +12,7 @@ const CardGame: React.FC<Props> = ({ teams }) => {
   return (
     <Container>
       <Team>
-        <Logo image={blueSize.image} name={blueSize.name} size={70} />
+        <Logo image={blueSize.image} name={blueSize.name} />
       </Team>
 
       <VersusLogo>
@@ -20,7 +20,7 @@ const CardGame: React.FC<Props> = ({ teams }) => {
       </VersusLogo>
 
       <Team>
-        <Logo image={redSize.image} name={redSize.name} size={70} />
+        <Logo image={redSize.image} name={redSize.name} />
       </Team>
     </Container>
   );

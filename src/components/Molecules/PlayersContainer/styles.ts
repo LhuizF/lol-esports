@@ -19,7 +19,7 @@ export const Container = styled.div<Props>`
   //background-color: red;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex-direction: row;
+    flex-direction: column;
   }
 `;
 
@@ -67,7 +67,7 @@ export const Content = styled.div<ContentProps>`
   height: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    //${({ minWidth }) => minWidth && `min-width: 175px;`}
+    width: 80%;
   }
 `;
 
@@ -93,4 +93,16 @@ export const GoldContainer = styled(Item)<GoldProps>`
     color: ${({ isPositive, theme }) =>
       isPositive ? theme.colors.positive : theme.colors.negative};
   }
+  width: 100%;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+  }
+`;
+
+export const MainInfosContainer = styled.div<Props>`
+  display: flex;
+  flex-direction: ${({ isReverse }) => (isReverse ? 'row' : 'row-reverse')};
+  width: 100%;
 `;

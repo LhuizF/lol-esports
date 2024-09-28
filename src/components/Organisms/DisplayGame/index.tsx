@@ -67,7 +67,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
         <>
           <Header>
             <div>
-              <Logo image={blueSize.image} size={60} name={blueSize.name} />
+              <Logo image={blueSize.image} name={blueSize.name} />
             </div>
 
             <Text>
@@ -76,7 +76,7 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
             </Text>
 
             <div>
-              <Logo image={redSize.image} size={60} name={redSize.name} />
+              <Logo image={redSize.image} name={redSize.name} />
             </div>
           </Header>
 

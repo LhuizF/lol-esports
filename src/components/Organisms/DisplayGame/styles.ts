@@ -35,10 +35,11 @@ export const Header = styled.div`
     text-align: center;
   }
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80px;
     hr {
       width: 90%;
       height: 3px;

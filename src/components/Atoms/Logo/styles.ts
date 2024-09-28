@@ -10,11 +10,19 @@ export const Container = styled.div<Props>`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
-  height: ${({ height }) => (height ? height : 'auto')};
   box-sizing: border-box;
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
 
-  p {
-    font-size: 1rem;
-    text-align: center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    height:60px;
+    p {
+      display: none;
+    }
   }
 `;
