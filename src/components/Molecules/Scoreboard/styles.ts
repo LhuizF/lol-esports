@@ -50,6 +50,7 @@ export const DragonsContainer = styled.div<Props>`
 
     div {
       padding: 0;
+      margin-top: 8px;
     }
     p {
       font-size: 18px;
