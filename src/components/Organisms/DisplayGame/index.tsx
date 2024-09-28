@@ -12,11 +12,14 @@ interface Props {
   gameNumber: number;
 }
 
+const getTeamSize = (teams: Team[], teamId: string) => {
+  return teams.find((team) => team.id === teamId);
+};
+
 const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   const [noApi, setNoApi] = useState(false);
   const [ddragon, setDdragon] = useState<Ddragon>();
 
-  const [blueSize, redSize] = match.teams;
   const {
     data: windowResponse,
     error: errorWindow,
@@ -46,7 +49,10 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
     return <Text>{msg}</Text>;
   }
 
-  if (isLoadingResponse || isLoadingDetails || !ddragon) {
+  const blueSize = getTeamSize(match.teams, windowResponse.gameMetadata.blueTeamMetadata.esportsTeamId);
+  const redSize = getTeamSize(match.teams, windowResponse.gameMetadata.redTeamMetadata.esportsTeamId);
+
+  if (isLoadingResponse || isLoadingDetails || !ddragon || !blueSize || !redSize) {
     return <Loading />;
   }
 
@@ -60,18 +66,18 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
       ) : (
         <>
           <Header>
-            <Logo image={blueSize.image} size={60} name={blueSize.name} />
             <div>
-              <p>{blueSize.name}</p>
-              {blueSize.result.gameWins > 0 && <hr />}
+              <Logo image={blueSize.image} size={60} name={blueSize.name} />
             </div>
+
             <Text>
               <h2>VS</h2>
               <span>{getGameState(frame.gameState)}</span>
             </Text>
-            {redSize.result.gameWins > 0 && <hr />}
-            <p>{redSize.name}</p>
-            <Logo image={redSize.image} size={60} name={redSize.name} />
+
+            <div>
+              <Logo image={redSize.image} size={60} name={redSize.name} />
+            </div>
           </Header>
 
           <Scoreboard frame={frame} />
@@ -81,8 +87,8 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
             ddragon={ddragon}
             gameMetadata={{
               ...windowResponse.gameMetadata,
-              blueTeamName: blueSize.name,
-              redTeamName: redSize.name
+              blueTeamName: blueSize?.name!,
+              redTeamName: redSize?.name!
             }}
           />
         </>

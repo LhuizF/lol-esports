@@ -27,7 +27,7 @@ const Game: React.FC = () => {
 
   const { event } = data.data;
   const title = event.match.teams.map((team) => team.code).join(' vs ');
-  //console.log(event.match)
+
   return (
     <Main title={title} isGame>
       <Navbar league={event.league} />

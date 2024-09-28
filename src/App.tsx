@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="game/:id" element={<Game />} />
-          <Route path="*" element={<div>404***</div>} />
+          <Route path="*" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
