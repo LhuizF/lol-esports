@@ -12,7 +12,7 @@ const Logo: React.FC<Props> = ({ image, name, size, height }) => {
   return (
     <Container height={height}>
       <img src={image} width={size} height={size} alt={name} />
-      {name && <p>{name}</p>}
+      {name && <p>{name.length > 15 ? name.slice(0, 15) + "..." : name}</p>}
     </Container>
   );
 };
