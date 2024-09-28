@@ -8,7 +8,7 @@ const feedLol = 'https://feed.lolesports.com/livestats/v1';
 interface RequestOptions {
   url: string;
   inTime?: boolean;
-  params?: { [x: string]: string };
+  params?: { [x: string]: string; };
 }
 
 const fetcher = async ({ url, inTime, params }: RequestOptions) => {
@@ -35,10 +35,16 @@ export const getVersion = async () => {
     res.json()
   );
   localStorage.setItem('version', version);
+
+  return version;
 };
 
 export const apiDataDragon = async (path: string) => {
-  const version = localStorage.getItem('version');
+  let version = localStorage.getItem('version');
+
+  if (!version) {
+    version = await getVersion();
+  }
 
   return await fetch(`${dataDragonUrl}cdn/${version}/data/pt_BR/${path}.json`).then(
     (res) => res.json()

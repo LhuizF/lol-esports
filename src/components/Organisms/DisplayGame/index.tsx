@@ -53,8 +53,6 @@ const DisplayGame: React.FC<Props> = ({ match, gameNumber }) => {
   const frame = windowResponse.frames[windowResponse.frames?.length - 1];
   const { participants } = detailsResponse.frames[detailsResponse.frames?.length - 1];
 
-  console.log(blueSize);
-
   return (
     <Container>
       {noApi ? (
